@@ -1,0 +1,13 @@
+.register {
+  background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
+  width: 100vw;
+  height: 100dvh;
+}
+
+.register-wrapper {
+  width: 500px;
+  height: 300px;
+  background-color: #FFF;
+  border-radius: 30px;
+  box-shadow: 0 10px 10px #aaa;
+}
