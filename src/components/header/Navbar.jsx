@@ -5,9 +5,9 @@ function Navbar() {
   return (
     <nav className="navbar">
       <ul className="navbar-list">
-        <NavItem text={"Home"} link={"/"} />
-        <NavItem text={"Become an Influencer"} link={"/promote"} />
-        <NavItem text={"Search Influencer"} link={"/search"} />
+        <NavItem text={"Home"} link={""} />
+        <NavItem text={"Become an Influencer"} link={"promote"} />
+        <NavItem text={"Search Influencer"} link={"search"} />
       </ul>
     </nav>
   )
