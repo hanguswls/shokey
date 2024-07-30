@@ -1,0 +1,42 @@
+.header-inner {
+  display: flex;
+  height: 56px;
+  margin-top: 48px;
+}
+
+.header-inner > .logo {
+  color: white;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.button-container {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+}
+
+#login-btn {
+  color: #7E95AA;
+  padding: 16px 24px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#sign-up-btn {
+  color: white;
+  padding: 16px 24px;
+  background: #FF1B6D;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 16px;
+}

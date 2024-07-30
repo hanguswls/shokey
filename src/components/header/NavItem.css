@@ -1,0 +1,14 @@
+.nav-item {
+  color: #7E95AA;
+}
+
+.nav-item > a {
+  color: #7E95AA;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav-item.active > a {
+  color: #FF1B6D;
+}
