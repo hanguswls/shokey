@@ -1,0 +1,64 @@
+footer {
+    color: #7E95AA;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 48px;
+    font-weight: 800;
+    width: 100%;
+    max-width: 1120px;
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo > img {
+    width: 31px;
+    height: 31px;
+}
+
+.logo > span {
+    color: white;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+#shokey-description {
+    font-size: 16px;
+    color: #7E95AA;
+    font-weight: 400;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid #7E95AA;
+    margin: 24px 0;
+}
+
+.footer-bottom {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-weight: 600;
+}
+
+#copyright {
+    font-size: 13px;
+}
+
+#terms {
+    font-size: 16px;
+    color: #7E95AA;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
