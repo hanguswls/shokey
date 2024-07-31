@@ -28,7 +28,7 @@ footer {
 .logo > span {
     color: white;
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 900;
 }
 
 #shokey-description {
@@ -39,7 +39,8 @@ footer {
 
 hr {
     border: none;
-    border-top: 2px solid #7E95AA
+    border-top: 2px solid #7E95AA;
+    margin: 24px 0;
 }
 
 .footer-bottom {
