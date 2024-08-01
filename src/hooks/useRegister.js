@@ -6,7 +6,7 @@ function useRegister() {
   const [pwConfirm, setPwConfirm] = useState();
   const [name, setName] = useState();
   const [gender, setGender] = useState();
-  const [term, setTerm] = useState();
+  const [email, setEmail] = useState();
 
   const handleIdChange = (e) => {
     setId(e.target.value);
@@ -23,8 +23,8 @@ function useRegister() {
   const handleGenderChange = (e) => {
     setGender(e.target.value);
   }
-  const handleTermCheck = (e) => {
-    setTerm(e.target.checked);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.checked);
   }
 
   const handleSubmit = async () => {
@@ -48,8 +48,8 @@ function useRegister() {
       alert('성별을 선택해주세요.');
       return ;
     }
-    if (!term) {
-      alert('개인정보 이용 약관에 동의해주세요.');
+    if (!email) {
+      alert('이메일을 입력해주세요.');
       return ;
     }
 
@@ -62,7 +62,7 @@ function useRegister() {
     handlePwConfirmChange,
     handleNameChange,
     handleGenderChange,
-    handleTermCheck,
+    handleEmailChange,
     handleSubmit
   }
 }
