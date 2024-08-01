@@ -1,5 +1,9 @@
 const postRegister = async (id, password, name, gender, email) => {
-  const res = await fetch(import.meta.VITE_APP_API_URL + '/api/auth/register', {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/auth/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
       "userId": id,
       "userPassword": password,

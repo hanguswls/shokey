@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { postRegister } from "../apis/authApi";
+import { useNavigate } from "react-router-dom";
 
 function useRegister() {
   const [id, setId] = useState();
@@ -7,6 +9,7 @@ function useRegister() {
   const [name, setName] = useState();
   const [gender, setGender] = useState();
   const [email, setEmail] = useState();
+  const navigate = useNavigate();
 
   const handleIdChange = (e) => {
     setId(e.target.value);
@@ -21,10 +24,10 @@ function useRegister() {
     setName(e.target.value);
   }
   const handleGenderChange = (e) => {
-    setGender(e.target.value);
+    setGender(Boolean(e.target.value));
   }
   const handleEmailChange = (e) => {
-    setEmail(e.target.checked);
+    setEmail(e.target.value);
   }
 
   const handleSubmit = async () => {
@@ -53,7 +56,16 @@ function useRegister() {
       return ;
     }
 
-    console.log('id: %s, pw: %s, name: %s, role: %s, term: %s', id, pw, name, role, term);
+    console.log('id: %s, pw: %s, name: %s, email: %s, gender: %s', id, pw, name, email, gender);
+
+    postRegister(id, pw, name, gender, email)
+    .then(() => {
+      alert('가입완료');
+      navigate('/login');
+    })
+    .catch((error) => {
+      alert(error.message);
+    })
   }
 
   return {
