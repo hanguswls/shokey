@@ -1,13 +1,46 @@
 .register {
-  background: linear-gradient(90deg, hsla(333, 100%, 53%, 1) 0%, hsla(33, 94%, 57%, 1) 100%);
-  width: 100vw;
-  height: 100dvh;
+  padding: 80px 0;
 }
 
 .register-wrapper {
-  width: 500px;
-  height: 300px;
-  background-color: #FFF;
-  border-radius: 30px;
-  box-shadow: 0 10px 10px #aaa;
+  max-width: 461px;
+  text-align: center;
+  margin: auto;
+}
+
+.register-wrapper > h2 {
+  color: white;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 48px;
+}
+
+.register-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.register-input-wrapper > input,
+.register-input-wrapper > select {
+  width: 100%;
+  padding: 10px 14px;
+  background: #2C353D;
+  border: none;
+  border-radius: 8px;
+  color: grey;
+  box-sizing: border-box;
+  outline: none;
+}
+
+
+.register-submit-btn {
+  padding: 8px 100px;
+  border-radius: 16px;
+  background: #FF1B6D;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
 }
