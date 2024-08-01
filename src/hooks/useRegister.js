@@ -56,8 +56,6 @@ function useRegister() {
       return ;
     }
 
-    console.log('id: %s, pw: %s, name: %s, email: %s, gender: %s', id, pw, name, email, gender);
-
     postRegister(id, pw, name, gender, email)
     .then(() => {
       alert('가입완료');
