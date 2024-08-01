@@ -21,7 +21,7 @@ function useRegister() {
     setName(e.target.value);
   }
   const handleGenderChange = (e) => {
-    setRole(e.target.value);
+    setGender(e.target.value);
   }
   const handleTermCheck = (e) => {
     setTerm(e.target.checked);
