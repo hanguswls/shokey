@@ -8,7 +8,7 @@ const useLogout = () => {
       removeCookie('accessToken', { path: '/' });
       removeCookie('refreshToken', { path: '/' });
     } catch (error) {
-      console.log('로그아웃 오류가 발생했습니다.', error);
+      alert('로그아웃 오류가 발생했습니다.', error);
     }
   };
 
