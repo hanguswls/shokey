@@ -1,6 +1,10 @@
 .hero-section {
   display: flex;
+}
 
+.main {
+  max-width: 1120px;
+  margin: auto;
 }
 
 .hero-section > .left,
