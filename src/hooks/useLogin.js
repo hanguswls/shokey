@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { postLogin } from "../apis/authApi";
 import { useNavigate } from "react-router-dom";
-import useUserStore from "../store/userStore";
 
 const useLogin = () => {
   const [id, setId] = useState();
@@ -11,7 +10,6 @@ const useLogin = () => {
   const navigate = useNavigate();
   const accessTokenExpiration = 2 * 60 * 60 * 1000; // 2시간
   const refreshTokenExpiration = 7 * 24 * 60 * 60 * 1000; // 7일
-  const setUserId = useUserStore((state) => state.setUserId);
 
   useEffect(()=>{
     if (cookies.accessToken && cookies.refreshToken) {
@@ -40,8 +38,6 @@ const useLogin = () => {
 
     postLogin({ id, password })
     .then(res => {
-      setUserId(id); // id를 store에 저장
-
       setCookie("accessToken", res.data.accessToken, {
         path: "/",
         expires: new Date(Date.now() + accessTokenExpiration),
