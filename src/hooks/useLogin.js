@@ -17,7 +17,7 @@ const useLogin = () => {
     if (cookies.accessToken && cookies.refreshToken) {
       navigate('/');
     }
-  }, [cookies.accessToken, cookies.refreshToken, navigate]);
+  }, [cookies, navigate]);
 
   const handleIdChange = (e) => {
     setId(e.target.value);

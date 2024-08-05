@@ -8,13 +8,13 @@ const useRefresh = () => {
   const refreshTokenExpiration = 7 * 24 * 60 * 60 * 1000;
 
   useEffect(()=>{
-    if (!cookies.accessToken) {
-      refresh;
+    if (!cookies.accessToken && cookies.refreshToken) {
+      refresh();
     }
-  }, [cookies.accessToken])
+  }, [cookies])
 
   const refresh = async () => {
-    postRefresh()
+    postRefresh(cookies.refreshToken)
     .then(res => {
       setCookie('accessToken', res.data.accessToken, {
         path: '/',

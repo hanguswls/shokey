@@ -39,10 +39,14 @@ const postLogin = async ({ id, password }) => {
 	return res.json();
 }
 
-const postRefresh = async () => {
+const postRefresh = async (refreshToken) => {
 	const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/auth/refresh', {
 	  method: 'PATCH',
 	  credentials: 'include',
+	  headers : {
+		'Content-Type': 'application/json',
+		'Authorization': `Bearer ${refreshToken}`
+	  },
 	});
 
 	if (!res.ok) {
