@@ -44,7 +44,6 @@ const postRefresh = async (refreshToken) => {
 	  method: 'PATCH',
 	  credentials: 'include',
 	  headers : {
-		'Content-Type': 'application/json',
 		'Authorization': `Bearer ${refreshToken}`
 	  },
 	});
