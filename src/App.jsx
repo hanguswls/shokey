@@ -4,8 +4,11 @@ import Register from './routes/Register'
 import Header from './components/header/Header'
 import Main from './routes/Main'
 import Footer from './components/footer/Footer'
+import Login from './routes/Login'
+import useRefresh from './hooks/useRefresh'
 
 function App() {
+	useRefresh();
 
   return (
     <div>
@@ -13,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/register' element={<Register />} />
+				<Route path='/login' element={<Login />} />
       </Routes>
       <Footer />
     </div>
