@@ -1,5 +1,5 @@
 import './Main.css';
-import heroImage from '/public/hero_image.png';
+import heroImage from '/hero_image.png';
 import playIcon from '../assets/play_icon.png';
 
 function Main() {

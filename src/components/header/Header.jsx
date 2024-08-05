@@ -1,8 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import './Header.css';
 import Navbar from "./Navbar";
-import logo from '/public/logo.png';
+import logo from '/logo.png';
 
 function Header() {
+  const navigate = useNavigate();
+
   return (
     <header>
       <section className="header-inner">
@@ -12,10 +15,10 @@ function Header() {
         </span>
         <Navbar />
         <div className="button-container">
-          <button id="login-btn">
+          <button id="login-btn" onClick={() => { navigate('/login') }}>
             Login
           </button>
-          <button id="sign-up-btn">
+          <button id="sign-up-btn" onClick={() => { navigate('/register') }}>
             Sign up
           </button>
         </div>
