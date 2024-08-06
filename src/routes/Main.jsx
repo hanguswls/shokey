@@ -2,21 +2,10 @@ import './Main.css';
 import heroImage from '/hero_image.png';
 import playIcon from '../assets/play_icon.png';
 import InfluencerCard from '../components/card/InfluencerCard';
-import { useEffect, useState } from 'react';
-import { getInfluencerList } from '../apis/influencerApi';
+import useInfluencerList from '../hooks/useInfluencerList';
 
 function Main() {
-  const [influencerList, setInfluencerList] = useState([]);
-
-  useEffect(() => {
-    getInfluencerList(0, 12, [])
-    .then((res) => {
-      setInfluencerList(res.data.content);
-    })
-    .catch((error) => {
-      alert(error.message);
-    })
-  }, [])
+  const { influencerList } = useInfluencerList();
 
   return (
     <main className="main">

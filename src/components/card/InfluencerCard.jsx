@@ -1,6 +1,7 @@
 import youtubeIcon from '../../assets/youtube_icon.png';
 import badgeIcon from '../../assets/badge_icon.png';
 import './InfluencerCard.css';
+import { formatFollowerNum } from '../../utils/format';
 
 function InfluencerCard(props) {
   const {
@@ -9,24 +10,6 @@ function InfluencerCard(props) {
     profile_image,
     subscribers
   } = props;
-
-  const formatFollowerNum = (num) => {
-    let result = 0;
-    let unit = '';
-
-    if (num >= 1000000) {
-      result = Math.floor(num / 10000) / 100;  
-      unit = 'M';
-    } else if (num >= 1000) {
-      result = Math.floor(num / 10) / 100;
-      unit = 'K';
-    }
-
-    console.log(result);
-    
-
-    return result.toString() + unit;
-  }
 
   return (
     <article className="influencer">
