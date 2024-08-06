@@ -82,3 +82,22 @@
   cursor: pointer;
   gap: 10px;
 }
+
+.influencer-section {
+  width: 100%;
+  padding: 100px 0;
+}
+
+.influencer-section-title {
+  color: white; text-align: center;
+  font-size: 48px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.influencer-list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  box-sizing: border-box;
+}

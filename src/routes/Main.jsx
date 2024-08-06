@@ -1,6 +1,7 @@
 import './Main.css';
 import heroImage from '/hero_image.png';
 import playIcon from '../assets/play_icon.png';
+import InfluencerCard from '../components/card/InfluencerCard';
 
 function Main() {
   return (
@@ -29,6 +30,18 @@ function Main() {
         <div className="right">
           <img className="main-hero-image" src={heroImage} alt="hero-image" />
         </div>
+      </section>
+      <section className="influencer-section">
+        <h2 className="influencer-section-title">Top influencers/SHOKEYs</h2>
+        <section className="influencer-list-container">
+          <InfluencerCard />
+          <InfluencerCard />
+          <InfluencerCard />
+          <InfluencerCard />
+          <InfluencerCard />
+          <InfluencerCard />
+          <InfluencerCard />
+        </section>
       </section>
     </main>
   )
