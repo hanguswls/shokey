@@ -2,8 +2,23 @@ import './Main.css';
 import heroImage from '/hero_image.png';
 import playIcon from '../assets/play_icon.png';
 import InfluencerCard from '../components/card/InfluencerCard';
+import testImg from '../assets/test.png';
+import { useEffect, useState } from 'react';
+import { getInfluencerList } from '../apis/influencerApi';
 
 function Main() {
+  const [influencerList, setInfluencerList] = useState([]);
+
+  useEffect(() => {
+    getInfluencerList(0, 12, [])
+    .then((res) => {
+      setInfluencerList(res.data.content);
+    })
+    .catch((error) => {
+      alert(error.message);
+    })
+  }, [])
+
   return (
     <main className="main">
       <section className="hero-section">
@@ -34,13 +49,21 @@ function Main() {
       <section className="influencer-section">
         <h2 className="influencer-section-title">Top influencers/SHOKEYs</h2>
         <section className="influencer-list-container">
-          <InfluencerCard />
-          <InfluencerCard />
-          <InfluencerCard />
-          <InfluencerCard />
-          <InfluencerCard />
-          <InfluencerCard />
-          <InfluencerCard />
+        <InfluencerCard 
+                        userName={"족집게 선생님"}
+                        verified={true}
+                        profile_image={testImg}
+                        subscribers={1000} />
+          {
+            influencerList.map((item, i) => {
+              return <InfluencerCard 
+                        key={i}
+                        userName={item.userInfo.userName}
+                        verified={item.verified}
+                        profile_image={item.profile_image}
+                        subscribers={item.subscribers} />
+            })
+          }
         </section>
       </section>
     </main>
