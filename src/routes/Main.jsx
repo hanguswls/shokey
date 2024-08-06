@@ -1,8 +1,12 @@
 import './Main.css';
 import heroImage from '/hero_image.png';
 import playIcon from '../assets/play_icon.png';
+import InfluencerCard from '../components/card/InfluencerCard';
+import useInfluencerList from '../hooks/useInfluencerList';
 
 function Main() {
+  const { influencerList } = useInfluencerList();
+
   return (
     <main className="main">
       <section className="hero-section">
@@ -29,6 +33,22 @@ function Main() {
         <div className="right">
           <img className="main-hero-image" src={heroImage} alt="hero-image" />
         </div>
+      </section>
+      <section className="influencer-section">
+        <h2 className="influencer-section-title">Top influencers/SHOKEYs</h2>
+        <section className="influencer-list-container">
+          {
+            influencerList.map((item, i) => {
+              return <InfluencerCard 
+                        key={i}
+                        userName={item.userInfo.userName}
+                        verified={item.verified}
+                        // profile_image={item.profile_image}
+                        profile_image={"https://picsum.photos/500.jpg?random" + i}
+                        subscribers={item.subscribers} />
+            })
+          }
+        </section>
       </section>
     </main>
   )

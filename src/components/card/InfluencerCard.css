@@ -1,0 +1,36 @@
+.influencer {
+  color: white;
+  background: #2C353D;
+  border-radius: 24px;
+  padding: 24px;
+  display: inline-block;
+}
+
+.influencer-image-wrapper {
+  margin: 0;
+  margin-bottom: 20px;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.influencer-image-wrapper > img {
+  width: 100%;
+}
+
+.influencer-name {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.influencer-follower {
+  color: #7E95AA;
+  font-size: 14px;
+  display: flex;
+  align-items: center;  
+  gap: 10px;
+}
