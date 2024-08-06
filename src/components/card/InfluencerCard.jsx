@@ -10,6 +10,24 @@ function InfluencerCard(props) {
     subscribers
   } = props;
 
+  const formatFollowerNum = (num) => {
+    let result = 0;
+    let unit = '';
+
+    if (num >= 1000000) {
+      result = Math.floor(num / 10000) / 100;  
+      unit = 'M';
+    } else if (num >= 1000) {
+      result = Math.floor(num / 10) / 100;
+      unit = 'K';
+    }
+
+    console.log(result);
+    
+
+    return result.toString() + unit;
+  }
+
   return (
     <article className="influencer">
       <figure className="influencer-image-wrapper">
@@ -17,7 +35,7 @@ function InfluencerCard(props) {
       </figure>
       <h4 className="influencer-name">{userName} { verified ? <img src={badgeIcon} alt="badge-icon" /> : null}</h4>
       <span className="influencer-follower">
-        <img src={youtubeIcon} alt="youtube-icon" /> {subscribers} followers
+        <img src={youtubeIcon} alt="youtube-icon" /> {formatFollowerNum(subscribers)} followers
       </span>
     </article>
   )
