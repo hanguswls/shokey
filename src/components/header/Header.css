@@ -23,7 +23,7 @@
   gap: 8px;
 }
 
-#login-btn {
+#login-btn, #logout-btn {
   color: #7E95AA;
   padding: 16px 24px;
   background: none;
@@ -33,7 +33,7 @@
   cursor: pointer;
 }
 
-#sign-up-btn {
+#sign-up-btn, #mypage-btn {
   color: white;
   padding: 16px 24px;
   background: #FF1B6D;
