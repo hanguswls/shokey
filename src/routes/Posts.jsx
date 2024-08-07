@@ -1,49 +1,72 @@
+import { useEffect, useState } from 'react';
 import PostCard from '../components/card/PostCard';
 import './Posts.css';
+import { getPostList } from '../apis/postApi';
 
 function Posts() {
+  const [postList, setPostList] = useState([]);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
+  const [pagingBtn, setPagingBtn] = useState([]);
+
+  useEffect(() => {
+    getPostList(page, 12, [])
+    .then((res) => {
+      setPostList(res.data.content);
+      setTotalPages(res.data.totalPages);
+    })
+    .catch((err) => {
+      alert(err.message);
+    })
+  }, [page]);
+
+  useEffect(() => {
+    const startPage = Math.floor(page / 5) + 1;
+    const endPage = (startPage + 4) <= totalPages ? (startPage + 4) : totalPages;
+    let pageNums = [];
+
+    for (let i = startPage; i <= endPage; i++) {
+      pageNums.push(i);
+    }
+
+    console.log(pageNums);
+    setPagingBtn(pageNums);
+  }, [page, totalPages])
+
   return (
     <main className="posts">
       <section className="posts-inner">
         <h2 className="posts-title">공고 둘러보기</h2>
         <section className="posts-container">
-          <PostCard
-            title={"다이어트 해주실분다이어트 해주실분다이어트 해주실분"}
-            user={"한현진"}
-            content={`다이어트(diet)를 영어로 직역하면, 식단(食單)이라는 뜻을 가진 어휘이며, 
-              그 뜻은 특정한 목적을 위하여 정해 놓는 식사 계획을 이르는 단어이다.[2] 
-              그러나 식량이 풍부해져 기아는 줄어들고, 과식으로 인한 체중증가문제가 사회문제로 
-              대두된 현대인들은 식단 계획을 정상 체중을 유지하기 위한 체중감량을 위해서 하는 
-              경우가 대부분이기 때문에, 현대에 이르로 다이어트의 뜻은 보통 체중을 조절하기 
-              위한 식단(식이 요법)으로 많이 쓰인다.`} />
-          <PostCard
-            title={"다이어트 해주실분다이어트 해주실분다이어트 해주실분"}
-            user={"한현진"}
-            content={`다이어트(diet)를 영어로 직역하면, 식단(食單)이라는 뜻을 가진 어휘이며, 
-              그 뜻은 특정한 목적을 위하여 정해 놓는 식사 계획을 이르는 단어이다.[2] 
-              그러나 식량이 풍부해져 기아는 줄어들고, 과식으로 인한 체중증가문제가 사회문제로 
-              대두된 현대인들은 식단 계획을 정상 체중을 유지하기 위한 체중감량을 위해서 하는 
-              경우가 대부분이기 때문에, 현대에 이르로 다이어트의 뜻은 보통 체중을 조절하기 
-              위한 식단(식이 요법)으로 많이 쓰인다.`} />
-          <PostCard
-            title={"다이어트 해주실분다이어트 해주실분다이어트 해주실분"}
-            user={"한현진"}
-            content={`다이어트(diet)를 영어로 직역하면, 식단(食單)이라는 뜻을 가진 어휘이며, 
-              그 뜻은 특정한 목적을 위하여 정해 놓는 식사 계획을 이르는 단어이다.[2] 
-              그러나 식량이 풍부해져 기아는 줄어들고, 과식으로 인한 체중증가문제가 사회문제로 
-              대두된 현대인들은 식단 계획을 정상 체중을 유지하기 위한 체중감량을 위해서 하는 
-              경우가 대부분이기 때문에, 현대에 이르로 다이어트의 뜻은 보통 체중을 조절하기 
-              위한 식단(식이 요법)으로 많이 쓰인다.`} />
-          <PostCard
-            title={"다이어트 해주실분다이어트 해주실분다이어트 해주실분"}
-            user={"한현진"}
-            content={`다이어트(diet)를 영어로 직역하면, 식단(食單)이라는 뜻을 가진 어휘이며, 
-              그 뜻은 특정한 목적을 위하여 정해 놓는 식사 계획을 이르는 단어이다.[2] 
-              그러나 식량이 풍부해져 기아는 줄어들고, 과식으로 인한 체중증가문제가 사회문제로 
-              대두된 현대인들은 식단 계획을 정상 체중을 유지하기 위한 체중감량을 위해서 하는 
-              경우가 대부분이기 때문에, 현대에 이르로 다이어트의 뜻은 보통 체중을 조절하기 
-              위한 식단(식이 요법)으로 많이 쓰인다.`} />
+          {
+            postList.map((item, i) => {
+              return (
+                <PostCard
+                  key={i}
+                  num={i}
+                  title={item.title}
+                  user={item.authorId}
+                  content={item.content} />
+              )
+            })
+          }
         </section>
+        <div className="posts-page-wrapper">
+          <ul>
+            {
+              pagingBtn.map((item, i) => {
+                console.log(item);
+                return (
+                  <li className="page-btn" key={i} onClick={() => {
+                    setPage(item);
+                  }}>
+                    { item }
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
       </section>
     </main>
   )
