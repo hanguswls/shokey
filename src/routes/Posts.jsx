@@ -23,7 +23,7 @@ function Posts() {
                   key={i}
                   num={i}
                   title={item.title}
-                  user={item.authorId}
+                  user={item.authorName}
                   content={item.content} />
               )
             })
