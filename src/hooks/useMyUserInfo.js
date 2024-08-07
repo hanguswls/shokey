@@ -54,10 +54,6 @@ const useMyUserInfo = () => {
     setMyUserInfo(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleEdit = () => {
-    navigate('update-user-info');
-  };
-
   const handleUpdateUserInfo = async () => {
     const changedData = Object.keys(myUserInfo).reduce((acc, key) => {
       if (myUserInfo[key] !== initialUserInfo[key]) {
@@ -101,7 +97,6 @@ const useMyUserInfo = () => {
     handleUserPasswordChange,
     handleUserNameChange,
     handleUserEmailChange,
-    handleEdit,
     handleUpdateUserInfo,
     handleToggle,
     handleDeleteUserInfo,

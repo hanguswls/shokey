@@ -1,0 +1,92 @@
+.user-info-container {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	max-width: 461px;
+	margin: 0 auto;
+  margin-bottom: 80px;
+  align-items: center;
+}
+
+.title {
+	color: #FFFFFF;
+	text-align: center;
+	font-weight: 600;
+	font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.field-name {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.field-value, #no-user-info {
+  background-color: #3E4C59;
+  color: #FFFFFF;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 14px;
+	width: 300px;
+  font-size: 16px;
+}
+
+#no-user-info {
+  text-align: center;
+  padding: 20px 14px;
+}
+
+.field-input {
+  outline: none;
+}
+
+.toggle-group {
+  display: flex;
+  gap: 10px;
+  width: 328px;
+}
+
+.toggle-button {
+  background-color: #3E4C59;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+	padding: 10px 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.toggle-button.active {
+  background-color: #FF1B6D;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.update-button, .delete-button {
+	border-radius: 16px;
+	background-color: #FF1B6D;
+	color: #FFFFFF;
+	padding: 12px 24px;
+	font-weight: 700;
+	cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+}
