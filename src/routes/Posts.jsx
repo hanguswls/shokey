@@ -21,7 +21,7 @@ function Posts() {
   }, [page]);
 
   useEffect(() => {
-    const startPage = Math.floor(page / 5) + 1;
+    const startPage = (Math.floor(page / 5) * 5) + 1;
     const endPage = (startPage + 4) <= totalPages ? (startPage + 4) : totalPages;
     let pageNums = [];
 
@@ -52,18 +52,32 @@ function Posts() {
           }
         </section>
         <div className="posts-page-wrapper">
-          <ul>
+          <ul className="page-btn-container">
+            {
+              page >= 5 ? <li className="page-btn" onClick={() => {
+                setPage(((Math.floor(page / 5) - 1) * 5) + 4);
+              }}>
+                &lt;
+              </li> : null
+            }
             {
               pagingBtn.map((item, i) => {
                 console.log(item);
                 return (
-                  <li className="page-btn" key={i} onClick={() => {
-                    setPage(item);
+                  <li className={"page-btn " + (item === page + 1 ? "active" : null)} key={i} onClick={() => {
+                    setPage(item - 1);
                   }}>
                     { item }
                   </li>
                 )
               })
+            }
+            {
+              totalPages > (Math.floor(page / 5) * 5) + 4 ? <li className="page-btn" onClick={() => {
+                setPage((Math.floor(page / 5) + 1) * 5);
+              }}>
+                &gt;
+              </li> : null
             }
           </ul>
         </div>

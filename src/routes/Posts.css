@@ -16,4 +16,29 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  margin-bottom: 40px;
 } 
+
+.page-btn-container {
+  display: flex;
+  padding: 0;
+  justify-content: center;
+  list-style: none;
+}
+
+.page-btn {
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #7E95AA;
+}
+
+.page-btn.active {
+  background: #7E95AA;
+  cursor: default;
+  color: #2C353D;
+}
