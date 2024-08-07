@@ -18,7 +18,7 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/register' element={<Register />} />
 				<Route path='/login' element={<Login />} />
-				<Route path='/create' element={<CreatePost />} />
+				<Route path='/upload' element={<CreatePost />} />
       </Routes>
       <Footer />
     </div>
