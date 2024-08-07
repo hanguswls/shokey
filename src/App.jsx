@@ -7,9 +7,11 @@ import Footer from './components/footer/Footer'
 import Login from './routes/Login'
 import useRefresh from './hooks/useRefresh'
 import CreatePost from './routes/CreatePost'
+import useInitializeUserInfo from './hooks/useInitializeUserInfo'
 
 function App() {
 	useRefresh();
+  useInitializeUserInfo();
 
   return (
     <div>
