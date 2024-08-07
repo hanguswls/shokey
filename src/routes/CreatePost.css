@@ -1,0 +1,109 @@
+.create-post {
+  color: white;
+}
+
+.create-post-inner {
+  max-width: 461px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  gap: 15px;
+  padding: 50px 0 100px 0;
+}
+
+#title {
+  background: #2C353D;
+  border-radius: 8px;
+  border: 0px;
+  padding: 10px 14px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#content {
+  background: #2C353D;
+  border-radius: 8px;
+  border: 0px;
+  padding: 10px 14px;
+  font-size: 16px;
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.due-date-wrapper {
+  background: #2C353D;
+  border-radius: 8px;
+  border: 0px;
+  padding: 10px 14px;
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.due-date-wrapper > input[type="date"] {
+  font-size: 14px;
+  background: none;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.due-date-wrapper > input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.due-date-wrapper > label {
+  margin-right: auto;
+  color: grey;
+}
+
+.price-wrapper {
+  background: #2C353D;
+  border-radius: 8px;
+  border: 0px;
+  padding: 10px 14px;
+  font-size: 16px;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.price-wrapper > label {
+  margin-right: auto;
+  color: grey;
+  flex: none;
+  width: 100px;
+}
+
+.price-wrapper > span {
+  margin-left: 5px;
+  color: grey;
+}
+
+.price-wrapper > input {
+  width: 100%;
+  text-align: right;
+  border: none;
+  outline: none;
+  background: none;
+  color: grey;
+  font-size: 14px;
+}
+
+#submit-btn {
+	padding: 10px 24px;
+	background-color: #FF1B6D;
+	border: none;
+	border-radius: 16px;
+	color: #FFF;
+	font-size: 16px;
+  font-weight: 700;
+	cursor: pointer;
+	margin-top: 33px;
+	margin-bottom: 18px;
+}
