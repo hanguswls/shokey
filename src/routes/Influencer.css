@@ -1,0 +1,116 @@
+.influencer-container {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	max-width: 461px;
+	margin: 0 auto;
+	color: #FFFFFF;
+  padding: 50px 0 100px 0;
+	font-size: 16px;
+}
+
+.influencer-title {
+	text-align: center;
+	font-weight: 600;
+	font-size: 25px;
+}
+
+/* RegisterInfluencer.jsx, UpdateInfluencer.jsx에서 사용 */
+.profile-upload {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* ViewInfluencer.jsx, ViewMyInfluencer.jsx에서 사용 */
+.profile-image-section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.profile-image {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: #7E95AA;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	margin: 0;
+}
+
+.profile-image img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.filebox {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.filebox label {
+	cursor: pointer;
+	padding: 10px 14px;
+	font-weight: 700;
+	cursor: pointer;
+	border-radius: 16px;
+	background-color: #7E95AA;
+}
+
+.filebox .influencer-field-input {
+	width: 195px;
+}
+
+.filebox input[type="file"] {
+	display: none;
+}
+
+.influencer-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.influencer-field {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-weight: 400;
+}
+
+.influencer-field-name {
+	font-weight: 700;
+}
+
+.influencer-field-input, .influencer-field-value, .influencer-field-select {
+	box-sizing: border-box;
+	background-color: #2C353D;
+	color: #FFFFFF;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 14px;
+	width: 371px;
+	font-size: 16px;
+}
+
+.influencer-field-input::placeholder,
+.influencer-field-select:invalid,
+.influencer-field-input[value="첨부파일"] {
+	color: grey;
+}
+
+.register-btn, .navigate-btn {
+	border-radius: 16px;
+	background-color: #FF1B6D;
+	color: #FFFFFF;
+	padding: 12px 24px;
+	font-weight: 700;
+	font-size: 16px;
+	cursor: pointer;
+	margin: 0 auto;
+}
