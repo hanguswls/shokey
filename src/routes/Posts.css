@@ -42,3 +42,21 @@
   cursor: default;
   color: #2C353D;
 }
+
+.posts-btn-wrapper {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: end;
+}
+
+.post-btn {
+  color: white;
+  background: #FF1B6D;
+  border-radius: 16px;
+  padding: 10px 24px;
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  line-height: 24px;
+}
