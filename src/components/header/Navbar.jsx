@@ -8,6 +8,7 @@ function Navbar() {
         <NavItem text={"Home"} link={""} />
         <NavItem text={"Become an Influencer"} link={"promote"} />
         <NavItem text={"Search Influencer"} link={"search"} />
+        <NavItem text={"Posts"} link={"posts"} />
       </ul>
     </nav>
   )

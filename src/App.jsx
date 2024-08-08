@@ -7,6 +7,7 @@ import Footer from './components/footer/Footer'
 import Login from './routes/Login'
 import useRefresh from './hooks/useRefresh'
 import CreatePost from './routes/CreatePost'
+import Posts from './routes/Posts'
 
 function App() {
 	useRefresh();
@@ -18,6 +19,7 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/register' element={<Register />} />
 				<Route path='/login' element={<Login />} />
+				<Route path='/posts' element={<Posts />} />
 				<Route path='/upload' element={<CreatePost />} />
       </Routes>
       <Footer />
