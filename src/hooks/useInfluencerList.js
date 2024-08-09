@@ -27,7 +27,6 @@ function useInfluencerList() {
       pageNums.push(i);
     }
 
-    console.log(pageNums);
     setPagingBtn(pageNums);
   }, [page, totalPages]);
 
