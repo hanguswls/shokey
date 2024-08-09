@@ -4,10 +4,15 @@ import filterIcon from '../assets/filter_icon.png';
 import clearIcon  from '../assets/clear_icon.png';
 import InfluencerCard from '../components/card/InfluencerCard';
 import useInfluencerList from '../hooks/useInfluencerList';
+import PagingButton from '../components/button/PagingButton/PagingButton';
 
 function Search() {
-  const {
-    influencerList
+  const { 
+    influencerList,
+    page,
+    setPage,
+    totalPages,
+    pagingBtn
   } = useInfluencerList();
 
   return (
@@ -51,6 +56,13 @@ function Search() {
             }
         </section>
       </div>
+      <div className="posts-page-wrapper">
+          <PagingButton
+            page={page}
+            pagingBtn={pagingBtn}
+            setPage={setPage}
+            totalPages={totalPages} />
+        </div>
     </main>
   )
 }
