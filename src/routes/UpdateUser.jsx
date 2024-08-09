@@ -1,21 +1,21 @@
 import React from 'react';
-import useMyUserInfo from '../hooks/useMyUserInfo';
-import './UserInfo.css';
+import useMyUser from '../hooks/useMyUser';
+import './User.css';
 
-const UpdateUserInfo = () => {
+const UpdateUser = () => {
   const {
-    myUserInfo,
+    myUser,
     handleUserIdChange,
     handleUserPasswordChange,
     handleUserNameChange,
     handleUserEmailChange,
     handleToggle,
-    handleUpdateUserInfo,
-    handleDeleteUserInfo,
-  } = useMyUserInfo();
+    handleUpdateUser,
+    handleDeleteUser,
+  } = useMyUser();
 
   return (
-    <div className="user-info-container">
+    <div className="user-container">
       <h2 className="title">사용자 정보 수정</h2>
       <div className="fields">
         <div className="field">
@@ -24,7 +24,7 @@ const UpdateUserInfo = () => {
             type="text"
             name="userId"
             className="field-value"
-            value={myUserInfo.userId}
+            value={myUser.userId}
             onChange={handleUserIdChange}>
           </input>
         </div>
@@ -34,7 +34,7 @@ const UpdateUserInfo = () => {
             type="password"
             name="userPassword"
             className="field-value"
-            value={myUserInfo.userPassword}
+            value={myUser.userPassword}
             onChange={handleUserPasswordChange}>
           </input>
         </div>
@@ -43,7 +43,7 @@ const UpdateUserInfo = () => {
           <input
             type="text"
             name="userName"
-            value={myUserInfo.userName}
+            value={myUser.userName}
             onChange={handleUserNameChange}
             className="field-value"
           />
@@ -53,14 +53,14 @@ const UpdateUserInfo = () => {
           <div className="toggle-group">
             <button
               type="button"
-              className={`toggle-button ${myUserInfo.userGender ? 'active' : ''}`}
+              className={`toggle-button ${myUser.userGender ? 'active' : ''}`}
               onClick={() => handleToggle('userGender', true)}
             >
               남성
             </button>
             <button
               type="button"
-              className={`toggle-button ${!myUserInfo.userGender ? 'active' : ''}`}
+              className={`toggle-button ${!myUser.userGender ? 'active' : ''}`}
               onClick={() => handleToggle('userGender', false)}
             >
               여성
@@ -72,18 +72,18 @@ const UpdateUserInfo = () => {
           <input
             type="text"
             name="userName"
-            value={myUserInfo.userEmail}
+            value={myUser.userEmail}
             onChange={handleUserEmailChange}
             className="field-value"
           />
         </div>
       </div>
       <div className="buttons">
-        <button onClick={handleUpdateUserInfo} className="update-button">수정완료</button>
-        <button onClick={handleDeleteUserInfo} className="delete-button">탈퇴하기</button>
+        <button onClick={handleUpdateUser} className="update-button">수정완료</button>
+        <button onClick={handleDeleteUser} className="delete-button">탈퇴하기</button>
       </div>
     </div>
   );
 };
 
-export default UpdateUserInfo;
+export default UpdateUser;

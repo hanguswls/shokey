@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
-import { getMyUserInfo, patchUserInfo, deleteUserInfo } from '../apis/userInfoApi';
+import { getMyUser, patchUser, deleteUser } from '../apis/userApi';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import useUserStore from '../store/userStore';
 
-const useMyUserInfo = () => {
+const useMyUser = () => {
   const [cookies, _ , removeCookies] = useCookies(['accessToken', 'refreshToken']);
   const navigate = useNavigate();
   const clearUser = useUserStore(state => state.clearUser);
-  const [initialUserInfo, setInitialUserInfo] = useState({});
-  const [myUserInfo, setMyUserInfo] = useState({
+  const [initialUser, setInitialUser] = useState({});
+  const [myUser, setMyUser] = useState({
     userId: '',
     userName: '',
     userPassword: '',
@@ -20,44 +20,44 @@ const useMyUserInfo = () => {
 
   useEffect(() => {
     if (cookies.accessToken) {
-      fetchMyUserInfo();
+      fetchMyUser();
     }
   }, [cookies])
 
-  const fetchMyUserInfo = async() => {
+  const fetchMyUser = async() => {
     try {
-      const res = await getMyUserInfo(cookies.accessToken);
-      setMyUserInfo(res.data);
-      setInitialUserInfo(res.data);
+      const res = await getMyUser(cookies.accessToken);
+      setMyUser(res.data);
+      setInitialUser(res.data);
     } catch (error) {
       alert(error.message);
     }
   };
 
   const handleUserIdChange = (e) => {
-    setMyUserInfo(prev => ({ ...prev, userId: e.target.value }));
+    setMyUser(prev => ({ ...prev, userId: e.target.value }));
   }
 
   const handleUserPasswordChange = (e) => {
-    setMyUserInfo(prev => ({ ...prev, userPassword: e.target.value }));
+    setMyUser(prev => ({ ...prev, userPassword: e.target.value }));
   }
 
   const handleUserNameChange = (e) => {
-    setMyUserInfo(prev => ({ ...prev, userName: e.target.value }));
+    setMyUser(prev => ({ ...prev, userName: e.target.value }));
   };
 
   const handleUserEmailChange = (e) => {
-    setMyUserInfo(prev => ({ ...prev, userEmail: e.target.value }));
+    setMyUser(prev => ({ ...prev, userEmail: e.target.value }));
   };
 
   const handleToggle = (field, value) => {
-    setMyUserInfo(prev => ({ ...prev, [field]: value }));
+    setMyUser(prev => ({ ...prev, [field]: value }));
   };
 
-  const handleUpdateUserInfo = async () => {
-    const changedData = Object.keys(myUserInfo).reduce((acc, key) => {
-      if (myUserInfo[key] !== initialUserInfo[key]) {
-        acc[key] = myUserInfo[key];
+  const handleUpdateUser = async () => {
+    const changedData = Object.keys(myUser).reduce((acc, key) => {
+      if (myUser[key] !== initialUser[key]) {
+        acc[key] = myUser[key];
       }
       return acc;
     }, {});
@@ -68,20 +68,20 @@ const useMyUserInfo = () => {
     }
 
     try {
-      await patchUserInfo(changedData, cookies.accessToken);
+      await patchUser(changedData, cookies.accessToken);
       alert('사용자 정보가 수정되었습니다.');
-      fetchMyUserInfo();
+      fetchMyUser();
       navigate('/mypage');
     } catch (error) {
       alert(error.message);
     }
   };
 
-  const handleDeleteUserInfo = async () => {
+  const handleDeleteUser = async () => {
     const isConfirmed = window.confirm('정말로 탈퇴하시겠습니까?');
     if (!isConfirmed) return;
     try {
-      await deleteUserInfo(cookies.accessToken);
+      await deleteUser(cookies.accessToken);
       clearUser();
       removeCookies('accessToken');
       removeCookies('refreshToken');
@@ -92,15 +92,15 @@ const useMyUserInfo = () => {
   };
 
   return {
-    myUserInfo,
+    myUser,
     handleUserIdChange,
     handleUserPasswordChange,
     handleUserNameChange,
     handleUserEmailChange,
-    handleUpdateUserInfo,
+    handleUpdateUser,
     handleToggle,
-    handleDeleteUserInfo,
+    handleDeleteUser,
   };
 }
 
-export default useMyUserInfo
+export default useMyUser

@@ -1,21 +1,21 @@
 import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-import { getMyUserInfo } from '../apis/userInfoApi';
+import { getMyUser } from '../apis/userApi';
 import useUserStore from '../store/userStore';
 
 // accessToken이 바뀔 때 id, userName을 받아와 전역상태로 저장
-const useInitializeUserInfo = () => {
+const useInitializeUser = () => {
   const [cookies] = useCookies(['accessToken']);
   const { setId, setUserName, setInfluencerId, clearUser } = useUserStore();
 
   useEffect(() => {
-    initializeUserInfo();
+    initializeUser();
   }, [cookies.accessToken]);
 
-  const initializeUserInfo = async () => {
+  const initializeUser = async () => {
     if (cookies.accessToken) {
       try {
-        const res = await getMyUserInfo(cookies.accessToken);
+        const res = await getMyUser(cookies.accessToken);
         setId(res.data.id);
         setUserName(res.data.userName);
         setInfluencerId(res.data.influencerId);
@@ -29,4 +29,4 @@ const useInitializeUserInfo = () => {
   };
 };
 
-export default useInitializeUserInfo;
+export default useInitializeUser;

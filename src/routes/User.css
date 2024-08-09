@@ -1,4 +1,4 @@
-.user-info-container {
+.user-container {
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
@@ -34,7 +34,7 @@
   font-weight: 700;
 }
 
-.field-value, #no-user-info {
+.field-value, #no-user {
   background-color: #3E4C59;
   color: #FFFFFF;
 	border: none;
@@ -44,7 +44,7 @@
   font-size: 16px;
 }
 
-#no-user-info {
+#no-user {
   text-align: center;
   padding: 20px 14px;
 }

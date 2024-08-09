@@ -11,18 +11,18 @@ const fetchAPI = async (endpoint, options = {}) => {
   return res.json();
 };
 
-const getUserInfo = (id) =>
+const getUser = (id) =>
   fetchAPI(`/api/users/${id}`, {
     method: 'GET',
   });
 
-const getMyUserInfo = (accessToken) =>
+const getMyUser = (accessToken) =>
   fetchAPI(`/api/me`, {
     method: 'GET',
     headers: { 'Authorization': `Bearer ${accessToken}` },
   });
 
-const patchUserInfo = ( changedData, accessToken ) =>
+const patchUser = ( changedData, accessToken ) =>
   fetchAPI(`/api/users`, {
     method: 'PATCH',
     headers: {
@@ -32,15 +32,15 @@ const patchUserInfo = ( changedData, accessToken ) =>
     body: JSON.stringify(changedData),
   });
 
-const deleteUserInfo = (accessToken) =>
+const deleteUser = (accessToken) =>
   fetchAPI(`/api/users`, {
     method: 'DELETE',
     headers: { 'Authorization': `Bearer ${accessToken}` },
   });
 
 export {
-  getMyUserInfo,
-  getUserInfo,
-  patchUserInfo,
-  deleteUserInfo,
+  getMyUser,
+  getUser,
+  patchUser,
+  deleteUser,
 };

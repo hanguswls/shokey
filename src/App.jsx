@@ -7,14 +7,15 @@ import Footer from './components/footer/Footer'
 import Login from './routes/Login'
 import useRefresh from './hooks/useRefresh'
 import CreatePost from './routes/CreatePost'
-import UpdateUserInfo from './routes/UpdateUserInfo'
-import ViewUserInfo from './routes/ViewUserInfo'
-import ViewMyUserInfo from './routes/ViewMyUserInfo'
-import useInitializeUserInfo from './hooks/useInitializeUserInfo'
+import Posts from './routes/Posts'
+import UpdateUser from './routes/UpdateUser'
+import ViewUser from './routes/ViewUser'
+import ViewMyUser from './routes/ViewMyUser'
+import useInitializeUser from './hooks/useInitializeUser'
 
 function App() {
 	useRefresh();
-  useInitializeUserInfo();
+  useInitializeUser();
 
   return (
     <div>
@@ -23,10 +24,11 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/register' element={<Register />} />
 				<Route path='/login' element={<Login />} />
+				<Route path='/posts' element={<Posts />} />
 				<Route path='/upload' element={<CreatePost />} />
-        <Route path='/users/:id' element={<ViewUserInfo />} />
-				<Route path='/update-user-info' element={<UpdateUserInfo />} />
-				<Route path='/mypage' element={<ViewMyUserInfo />} />
+        <Route path='/user/:id' element={<ViewUser />} />
+				<Route path='/update-user' element={<UpdateUser />} />
+				<Route path='/mypage' element={<ViewMyUser />} />
       </Routes>
       <Footer />
     </div>
