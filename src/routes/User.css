@@ -4,37 +4,35 @@
 	gap: 50px;
 	max-width: 461px;
 	margin: 0 auto;
-  margin-bottom: 80px;
-  align-items: center;
+	color: #FFFFFF;
+  padding: 50px 0 100px 0;
+	font-size: 16px;
 }
 
-.title {
-	color: #FFFFFF;
+.user-title {
 	text-align: center;
 	font-weight: 600;
 	font-size: 25px;
-  margin-bottom: 20px;
 }
 
-.fields {
+.user-fields {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  width: 100%;
 }
 
-.field {
+.user-field {
   display: flex;
   justify-content: space-between;
   align-items: center;
+	font-weight: 400;
 }
 
-.field-name {
-  color: #FFFFFF;
+.user-field-name {
   font-weight: 700;
 }
 
-.field-value, #no-user {
+.user-field-value, #no-user {
   background-color: #3E4C59;
   color: #FFFFFF;
 	border: none;
@@ -44,12 +42,7 @@
   font-size: 16px;
 }
 
-#no-user {
-  text-align: center;
-  padding: 20px 14px;
-}
-
-.field-input {
+.user-field-input {
   outline: none;
 }
 

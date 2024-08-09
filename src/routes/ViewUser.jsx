@@ -9,30 +9,27 @@ const ViewUser = () => {
 
   return (
     <div className="user-container">
-    <h2 className="title">사용자 정보 조회</h2>
-    {(user.userName === '') ?
-      <h2 id="no-user">사용자 정보 없음</h2> :
-      <div className="fields">
-        <div className="field">
-          <span className="field-name">이름</span>
-          <span className="field-value">
+      <h2 className="user-title">사용자 정보</h2>
+      <div className="user-fields">
+        <div className="user-field">
+          <span className="user-field-name">이름</span>
+          <span className="user-field-value">
             {user.userName}
           </span>
         </div>
-        <div className="field">
-          <span className="field-name">성별</span>
-          <span className="field-value">
+        <div className="user-field">
+          <span className="user-field-name">성별</span>
+          <span className="user-field-value">
             {user.userGender ? '남성' : '여성'}
           </span>
         </div>
-        <div className="field">
-          <span className="field-name">이메일</span>
-          <span className="field-value">
+        <div className="user-field">
+          <span className="user-field-name">이메일</span>
+          <span className="user-field-value">
             {user.userEmail}
           </span>
         </div>
       </div>
-    }
     </div>
   );
 };

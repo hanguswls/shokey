@@ -16,40 +16,40 @@ const UpdateUser = () => {
 
   return (
     <div className="user-container">
-      <h2 className="title">사용자 정보 수정</h2>
-      <div className="fields">
-        <div className="field">
-          <span className="field-name">아이디</span>
+      <h2 className="user-title">사용자 정보 수정</h2>
+      <div className="user-fields">
+        <div className="user-field">
+          <span className="user-field-name">아이디</span>
           <input
             type="text"
             name="userId"
-            className="field-value"
+            className="user-field-value"
             value={myUser.userId}
             onChange={handleUserIdChange}>
           </input>
         </div>
-        <div className="field">
-          <span className="field-name">패스워드</span>
+        <div className="user-field">
+          <span className="user-field-name">패스워드</span>
           <input
             type="password"
             name="userPassword"
-            className="field-value"
+            className="user-field-value"
             value={myUser.userPassword}
             onChange={handleUserPasswordChange}>
           </input>
         </div>
-        <div className="field">
-          <span className="field-name">이름</span>
+        <div className="user-field">
+          <span className="user-field-name">이름</span>
           <input
             type="text"
             name="userName"
             value={myUser.userName}
             onChange={handleUserNameChange}
-            className="field-value"
+            className="user-field-value"
           />
         </div>
-        <div className="field">
-          <span className="field-name">성별</span>
+        <div className="user-field">
+          <span className="user-field-name">성별</span>
           <div className="toggle-group">
             <button
               type="button"
@@ -67,14 +67,14 @@ const UpdateUser = () => {
             </button>
           </div>
         </div>
-        <div className="field">
-          <span className="field-name">이메일</span>
+        <div className="user-field">
+          <span className="user-field-name">이메일</span>
           <input
             type="text"
             name="userName"
             value={myUser.userEmail}
             onChange={handleUserEmailChange}
-            className="field-value"
+            className="user-field-value"
           />
         </div>
       </div>
