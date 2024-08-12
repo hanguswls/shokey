@@ -41,7 +41,7 @@ function Main() {
             influencerList.map((item, i) => {
               return <InfluencerCard 
                         key={i}
-                        userName={item.userInfo.userName}
+                        userName={item.user.userName}
                         verified={item.verified}
                         // profile_image={item.profile_image}
                         profile_image={"https://picsum.photos/500.jpg?random" + i}
