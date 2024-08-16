@@ -1,0 +1,95 @@
+.search {
+  max-width: 1120px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 40px 0 100px 0;
+  box-sizing: border-box;
+}
+
+.search-bar-wrapper {
+  background: #2C353D;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+#search {
+  background: none;
+  border: none;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.search-main-content {
+  display: flex;
+  gap: 30px;
+}
+
+.filter {
+  padding: 16px;
+  box-sizing: border-box;
+  background: #2C353D;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: calc(3 / 12 * 100%);
+  flex: none;
+}
+
+.filter-title-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.filter-title-wrapper > h3 {
+  color: white;
+  margin: 0;
+  margin-left: 12px;
+  margin-right: auto;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.filter-title-wrapper > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #7E95AA;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.filter-niche > h4 {
+  font-size: 14px;
+  margin: 0;
+  line-height: 28px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.filter-niche > ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.filter-niche > ul > li {
+  color: #7E95AA;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.influencers-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}

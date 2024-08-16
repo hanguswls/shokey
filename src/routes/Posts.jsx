@@ -3,6 +3,7 @@ import PostCard from '../components/card/PostCard';
 import usePostList from '../hooks/usePostList';
 import './Posts.css';
 import { useCookies } from 'react-cookie';
+import PagingButton from '../components/button/PagingButton/PagingButton';
 
 function Posts() {
   const {
@@ -44,34 +45,11 @@ function Posts() {
           }
         </section>
         <div className="posts-page-wrapper">
-          <ul className="page-btn-container">
-            {
-              page >= 5 ? <li className="page-btn" onClick={() => {
-                setPage(((Math.floor(page / 5) - 1) * 5) + 4);
-              }}>
-                &lt;
-              </li> : null
-            }
-            {
-              pagingBtn.map((item, i) => {
-                console.log(item);
-                return (
-                  <li className={"page-btn " + (item === page + 1 ? "active" : null)} key={i} onClick={() => {
-                    setPage(item - 1);
-                  }}>
-                    { item }
-                  </li>
-                )
-              })
-            }
-            {
-              totalPages > (Math.floor(page / 5) * 5) + 4 ? <li className="page-btn" onClick={() => {
-                setPage((Math.floor(page / 5) + 1) * 5);
-              }}>
-                &gt;
-              </li> : null
-            }
-          </ul>
+          <PagingButton
+            page={page}
+            pagingBtn={pagingBtn}
+            setPage={setPage}
+            totalPages={totalPages} />
         </div>
       </section>
     </main>
