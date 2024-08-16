@@ -24,7 +24,7 @@ function App() {
 				<Route path='/posts' element={<Posts />} />
 				<Route path='/upload' element={<CreatePost />} />
 				<Route path='/search' element={<Search />} />
-				<Route path='/post' element={<PostDetail />} />
+				<Route path='/post/:id' element={<PostDetail />} />
       </Routes>
       <Footer />
     </div>
