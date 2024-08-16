@@ -14,7 +14,7 @@ const postRegister = async (id, password, name, gender, email) => {
   });
 
   if (!res.ok) {
-    const message = await res.json().statusMsg;
+    const message = (await res.json()).statusMsg;
     throw new Error(message);
   }
 
