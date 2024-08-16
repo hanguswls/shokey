@@ -40,4 +40,15 @@ const getPostList = async (page, size, sort) => {
   return res.json();
 }
 
-export { uploadPost, getPostList };
+const getPost = async (id) => {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/posts/${id}`);
+
+  if (!res.ok) {
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+export { uploadPost, getPostList, getPost };

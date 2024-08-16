@@ -37,6 +37,7 @@ function Posts() {
                 <PostCard
                   key={i}
                   num={i}
+                  id={item.id}
                   title={item.title}
                   user={item.authorName}
                   content={item.content} />
