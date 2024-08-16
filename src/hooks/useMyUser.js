@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { getMyUser, postUser, deleteUser } from '../apis/userApi';
+import { getMyUser, postUser, putUser, deleteUser } from '../apis/userApi';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import useUserStore from '../store/userStore';
+import userStore from '../store/userStore';
 
 const useMyUser = () => {
   const [cookies, _ , removeCookies] = useCookies(['accessToken', 'refreshToken']);
   const navigate = useNavigate();
-  const clearUser = useUserStore(state => state.clearUser);
+  const clearUser = userStore(state => state.clearUser);
   const [myUser, setMyUser] = useState({
     userId: '',
     userName: '',
@@ -54,7 +54,7 @@ const useMyUser = () => {
 
   const handleUpdateUser = async () => {
     try {
-      await postUser(myUser, cookies.accessToken);
+      await putUser(myUser, cookies.accessToken);
       alert('사용자 정보가 수정되었습니다.');
       fetchMyUser();
       navigate('/mypage');

@@ -4,8 +4,8 @@ const fetchAPI = async (endpoint, options = {}) => {
   const res = await fetch(`${API_BASE_URL}${endpoint}`, options);
 
   if (!res.ok) {
-    const message = await res.json();
-    throw new Error(message.statusMsg);
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
   }
 
   return res.json();
@@ -32,6 +32,17 @@ const postUser = ( myUser, accessToken ) =>
     body: JSON.stringify(myUser),
   });
 
+const putUser = ( myUser, accessToken ) =>
+  fetchAPI(`/api/users`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+    },
+    body: JSON.stringify(myUser),
+  });
+
+
 const deleteUser = (accessToken) =>
   fetchAPI(`/api/users`, {
     method: 'DELETE',
@@ -42,5 +53,6 @@ export {
   getMyUser,
   getUser,
   postUser,
+  putUser,
   deleteUser,
 };
