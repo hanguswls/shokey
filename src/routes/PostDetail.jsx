@@ -1,21 +1,8 @@
-import { useParams } from 'react-router-dom';
+import usePostDetail from '../hooks/usePostDetail';
 import './PostDetail.css';
-import { useEffect, useState } from 'react';
-import { getPost } from '../apis/postApi';
 
 function PostDetail() {
-  const params = useParams();
-  const [post, setPost] = useState({});
-
-  useEffect(() => {
-    getPost(params.id)
-    .then((res) => {
-      setPost(res.data);
-    })
-    .catch((err) => {
-      alert(err.message);
-    })
-  }, [params])
+  const { post } = usePostDetail();
 
   return (
     <main className="post-detail">
