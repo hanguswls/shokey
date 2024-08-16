@@ -32,7 +32,7 @@ const postLogin = async ({ id, password }) => {
 	});
 
 	if (!res.ok) {
-	  const message = await res.json().statusMsg;
+	  const message = (await res.json()).statusMsg;
 	  throw new Error(message);
 	}
 
@@ -49,7 +49,7 @@ const postRefresh = async (refreshToken) => {
 	});
 
 	if (!res.ok) {
-	  const message = await res.json().statusMsg;
+	  const message = (await res.json()).statusMsg;
 	  throw new Error(message);
 	}
 
