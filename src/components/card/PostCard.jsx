@@ -1,15 +1,18 @@
+import { useNavigate } from 'react-router-dom';
 import './PostCard.css';
 
 function PostCard(props) {
+  const navigate = useNavigate();
   const {
     title,
     user,
     content,
+    id,
     num
   } = props;
 
   return (
-    <article className="post-card">
+    <article className="post-card" onClick={() => { navigate('/post/' + id) }}>
       <figure className="post-card-image">
         <img src={"https://picsum.photos/500.jpg?random=" + num} alt="post" />
       </figure>

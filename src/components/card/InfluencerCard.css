@@ -11,6 +11,7 @@
   margin-bottom: 20px;
   aspect-ratio: 1;
   overflow: hidden;
+  border-radius: 12px;
 }
 
 .influencer-image-wrapper > img {
