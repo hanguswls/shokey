@@ -34,7 +34,7 @@ const UpdateUser = () => {
             type="password"
             name="userPassword"
             className="user-field-value"
-            value={myUser.userPassword}
+            value={myUser.userPassword || ''}
             onChange={handleUserPasswordChange}>
           </input>
         </div>

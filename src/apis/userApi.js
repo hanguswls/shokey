@@ -22,14 +22,14 @@ const getMyUser = (accessToken) =>
     headers: { 'Authorization': `Bearer ${accessToken}` },
   });
 
-const patchUser = ( changedData, accessToken ) =>
+const postUser = ( myUser, accessToken ) =>
   fetchAPI(`/api/users`, {
-    method: 'PATCH',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     },
-    body: JSON.stringify(changedData),
+    body: JSON.stringify(myUser),
   });
 
 const deleteUser = (accessToken) =>
@@ -41,6 +41,6 @@ const deleteUser = (accessToken) =>
 export {
   getMyUser,
   getUser,
-  patchUser,
+  postUser,
   deleteUser,
 };

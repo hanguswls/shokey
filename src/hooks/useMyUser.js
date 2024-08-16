@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getMyUser, patchUser, deleteUser } from '../apis/userApi';
+import { getMyUser, postUser, deleteUser } from '../apis/userApi';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import useUserStore from '../store/userStore';
@@ -8,7 +8,6 @@ const useMyUser = () => {
   const [cookies, _ , removeCookies] = useCookies(['accessToken', 'refreshToken']);
   const navigate = useNavigate();
   const clearUser = useUserStore(state => state.clearUser);
-  const [initialUser, setInitialUser] = useState({});
   const [myUser, setMyUser] = useState({
     userId: '',
     userName: '',
@@ -28,7 +27,6 @@ const useMyUser = () => {
     try {
       const res = await getMyUser(cookies.accessToken);
       setMyUser(res.data);
-      setInitialUser(res.data);
     } catch (error) {
       alert(error.message);
     }
@@ -55,20 +53,8 @@ const useMyUser = () => {
   };
 
   const handleUpdateUser = async () => {
-    const changedData = Object.keys(myUser).reduce((acc, key) => {
-      if (myUser[key] !== initialUser[key]) {
-        acc[key] = myUser[key];
-      }
-      return acc;
-    }, {});
-
-    if (Object.keys(changedData).length === 0) {
-      alert('변경된 정보가 없습니다.');
-      return;
-    }
-
     try {
-      await patchUser(changedData, cookies.accessToken);
+      await postUser(myUser, cookies.accessToken);
       alert('사용자 정보가 수정되었습니다.');
       fetchMyUser();
       navigate('/mypage');
