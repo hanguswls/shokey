@@ -1,11 +1,6 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware';
 
-// const useUserStore = create((set) => ({
-//   user: null,
-//   setUser: (newUserInfo) => set({user: newUserInfo}),
-// }))
-
 const useUserStore = create(
   persist(
     (set) => ({
