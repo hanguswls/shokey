@@ -40,10 +40,26 @@
   position: relative;
 }
 
+.apply > section > figure > video {
+  width: 100%;
+}
+
+.apply > section > figure > div {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+}
+
+.apply > section > figure > input {
+  display: none;
+}
+
 .apply > section > figure > button {
   position: absolute;
   right: 27px;
-  bottom: 23px;
+  top: 23px;
   background: #7E95AA;
   border-radius: 100%;
   border: none;
