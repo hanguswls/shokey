@@ -3,12 +3,12 @@ import './Header.css';
 import Navbar from "./Navbar";
 import logo from '/logo.png';
 import useLogout from '../../hooks/useLogout';
-import userStore from '../../store/userStore';
+import useUserStore from '../../store/useUserStore';
 
 function Header() {
   const navigate = useNavigate();
   const handleLogout = useLogout();
-  const { userName } = userStore();
+  const { user } = useUserStore();
 
   return (
     <header>
@@ -19,13 +19,13 @@ function Header() {
         </span>
         <Navbar />
         <div className="button-container">
-        {(userName) ? (
+        { user ? (
             <>
               <button id="logout-btn" onClick={handleLogout}>
                 Logout
               </button>
               <button id="mypage-btn" onClick={() => {navigate(`/mypage`)}}>
-                {userName}님
+                {user.userName}님
               </button>
             </>
           ) : (

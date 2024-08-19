@@ -22,24 +22,24 @@ const getMyUser = (accessToken) =>
     headers: { 'Authorization': `Bearer ${accessToken}` },
   });
 
-const postUser = ( myUser, accessToken ) =>
+const postUser = ( user, accessToken ) =>
   fetchAPI(`/api/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     },
-    body: JSON.stringify(myUser),
+    body: JSON.stringify(user),
   });
 
-const putUser = ( myUser, accessToken ) =>
+const putUser = ( user, accessToken ) =>
   fetchAPI(`/api/users`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${accessToken}`
     },
-    body: JSON.stringify(myUser),
+    body: JSON.stringify(user),
   });
 
 

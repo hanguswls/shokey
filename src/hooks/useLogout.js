@@ -1,15 +1,15 @@
 import { useCookies } from 'react-cookie';
-import userStore from '../store/userStore';
+import useUserStore from '../store/useUserStore';
 
 const useLogout = () => {
   const [, , removeCookie] = useCookies(['accessToken', 'refreshToken']);
-  const clearUser = userStore(state => state.clearUser);
+  const { setUser } = useUserStore();
 
   const logout = () => {
     try {
       removeCookie('accessToken', { path: '/' });
       removeCookie('refreshToken', { path: '/' });
-      clearUser();
+      setUser(null);
     } catch (error) {
       alert('로그아웃 오류가 발생했습니다.', error);
     }

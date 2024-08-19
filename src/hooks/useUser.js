@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { getUser } from '../apis/userApi';
 
 const useUser = (id) => {
+
   const [user, setUser] = useState({
-    userId: '',
+    id: '',
     userName: '',
     userGender: true,
     userEmail: '',
@@ -26,10 +27,7 @@ const useUser = (id) => {
     }
   };
 
-
-  return {
-    user
-  };
+  return { user };
 }
 
 export default useUser

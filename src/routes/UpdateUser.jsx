@@ -4,7 +4,7 @@ import './User.css';
 
 const UpdateUser = () => {
   const {
-    myUser,
+    user,
     handleUserIdChange,
     handleUserPasswordChange,
     handleUserNameChange,
@@ -22,9 +22,9 @@ const UpdateUser = () => {
           <span className="user-field-name">아이디</span>
           <input
             type="text"
-            name="userId"
+            name="id"
             className="user-field-value"
-            value={myUser.userId}
+            value={user.userId || ''}
             onChange={handleUserIdChange}>
           </input>
         </div>
@@ -34,7 +34,7 @@ const UpdateUser = () => {
             type="password"
             name="userPassword"
             className="user-field-value"
-            value={myUser.userPassword || ''}
+            value={user.userPassword || ''}
             onChange={handleUserPasswordChange}>
           </input>
         </div>
@@ -43,7 +43,7 @@ const UpdateUser = () => {
           <input
             type="text"
             name="userName"
-            value={myUser.userName}
+            value={user.userName}
             onChange={handleUserNameChange}
             className="user-field-value"
           />
@@ -53,14 +53,14 @@ const UpdateUser = () => {
           <div className="toggle-group">
             <button
               type="button"
-              className={`toggle-button ${myUser.userGender ? 'active' : ''}`}
+              className={`toggle-button ${user.userGender ? 'active' : ''}`}
               onClick={() => handleToggle('userGender', true)}
             >
               남성
             </button>
             <button
               type="button"
-              className={`toggle-button ${!myUser.userGender ? 'active' : ''}`}
+              className={`toggle-button ${!user.userGender ? 'active' : ''}`}
               onClick={() => handleToggle('userGender', false)}
             >
               여성
@@ -72,7 +72,7 @@ const UpdateUser = () => {
           <input
             type="text"
             name="userName"
-            value={myUser.userEmail}
+            value={user.userEmail || ''}
             onChange={handleUserEmailChange}
             className="user-field-value"
           />

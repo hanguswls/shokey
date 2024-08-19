@@ -1,62 +1,37 @@
-import { useState, useEffect } from 'react';
-import { getMyUser, postUser, putUser, deleteUser } from '../apis/userApi';
+import { putUser, deleteUser } from '../apis/userApi';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
-import userStore from '../store/userStore';
+import useUserStore from '../store/useUserStore';
 
 const useMyUser = () => {
   const [cookies, _ , removeCookies] = useCookies(['accessToken', 'refreshToken']);
   const navigate = useNavigate();
-  const clearUser = userStore(state => state.clearUser);
-  const [myUser, setMyUser] = useState({
-    userId: '',
-    userName: '',
-    userPassword: '',
-    userGender: true,
-    userEmail: '',
-    userRole: 0,
-  });
-
-  useEffect(() => {
-    if (cookies.accessToken) {
-      fetchMyUser();
-    }
-  }, [cookies])
-
-  const fetchMyUser = async() => {
-    try {
-      const res = await getMyUser(cookies.accessToken);
-      setMyUser(res.data);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  const { user, setUser } = useUserStore();
 
   const handleUserIdChange = (e) => {
-    setMyUser(prev => ({ ...prev, userId: e.target.value }));
+    setUser({...user, userId: e.target.value});
   }
 
   const handleUserPasswordChange = (e) => {
-    setMyUser(prev => ({ ...prev, userPassword: e.target.value }));
+    setUser({...user, userPassword: e.target.value});
   }
 
   const handleUserNameChange = (e) => {
-    setMyUser(prev => ({ ...prev, userName: e.target.value }));
+    setUser({...user, userName: e.target.value});
   };
 
   const handleUserEmailChange = (e) => {
-    setMyUser(prev => ({ ...prev, userEmail: e.target.value }));
+    setUser({...user, userEmail: e.target.value});
   };
 
   const handleToggle = (field, value) => {
-    setMyUser(prev => ({ ...prev, [field]: value }));
+    setUser({...user, [field]: value});
   };
 
   const handleUpdateUser = async () => {
     try {
-      await putUser(myUser, cookies.accessToken);
+      await putUser(user, cookies.accessToken);
       alert('사용자 정보가 수정되었습니다.');
-      fetchMyUser();
       navigate('/mypage');
     } catch (error) {
       alert(error.message);
@@ -68,7 +43,7 @@ const useMyUser = () => {
     if (!isConfirmed) return;
     try {
       await deleteUser(cookies.accessToken);
-      clearUser();
+      setUser(null);
       removeCookies('accessToken');
       removeCookies('refreshToken');
       alert('사용자 정보가 탈퇴되었습니다.');
@@ -78,7 +53,7 @@ const useMyUser = () => {
   };
 
   return {
-    myUser,
+    user,
     handleUserIdChange,
     handleUserPasswordChange,
     handleUserNameChange,
