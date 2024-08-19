@@ -30,7 +30,7 @@ function App() {
 				<Route path='/upload' element={<CreatePost />} />
 				<Route path='/search' element={<Search />} />
 				<Route path='/post/:id' element={<PostDetail />} />
-        <Route path='/user/:id' element={<ViewUser />} />
+        <Route path='/users/:id' element={<ViewUser />} />
 				<Route path='/update-user' element={<UpdateUser />} />
 				<Route path='/mypage' element={<ViewMyUser />} />
       </Routes>
