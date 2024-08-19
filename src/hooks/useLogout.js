@@ -1,9 +1,9 @@
 import { useCookies } from 'react-cookie';
-import useUserStore from '../store/userStore';
+import userStore from '../store/userStore';
 
 const useLogout = () => {
   const [, , removeCookie] = useCookies(['accessToken', 'refreshToken']);
-  const clearUser = useUserStore(state => state.clearUser);
+  const clearUser = userStore(state => state.clearUser);
 
   const logout = () => {
     try {

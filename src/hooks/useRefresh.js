@@ -3,7 +3,7 @@ import { postRefresh } from '../apis/authApi';
 import { useEffect } from 'react';
 
 const useRefresh = () => {
-  const [cookies, setCookie, ] = useCookies(['accessToken', 'refreshToken']);
+  const [cookies, setCookie, removeCookie] = useCookies(['accessToken', 'refreshToken']);
   const accessTokenExpiration = 2 * 60 * 60 * 1000;
   const refreshTokenExpiration = 7 * 24 * 60 * 60 * 1000;
 
@@ -27,6 +27,8 @@ const useRefresh = () => {
     })
     .catch(error => {
       alert(error.message);
+      removeCookie('accessToken');
+      removeCookie('refreshToken');
     })
   };
 }

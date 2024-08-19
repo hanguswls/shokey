@@ -3,12 +3,12 @@ import './Header.css';
 import Navbar from "./Navbar";
 import logo from '/logo.png';
 import useLogout from '../../hooks/useLogout';
-import useUserStore from '../../store/userStore';
+import userStore from '../../store/userStore';
 
 function Header() {
   const navigate = useNavigate();
   const handleLogout = useLogout();
-  const { userName } = useUserStore();
+  const { userName } = userStore();
 
   return (
     <header>
