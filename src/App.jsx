@@ -10,6 +10,7 @@ import CreatePost from './routes/CreatePost'
 import Posts from './routes/Posts'
 import Search from './routes/Search'
 import PostDetail from './routes/PostDetail'
+import Apply from './routes/Apply'
 
 function App() {
 	useRefresh();
@@ -25,6 +26,7 @@ function App() {
 				<Route path='/upload' element={<CreatePost />} />
 				<Route path='/search' element={<Search />} />
 				<Route path='/post/:id' element={<PostDetail />} />
+        <Route path='/apply/:postId' element={<Apply />} />
       </Routes>
       <Footer />
     </div>
