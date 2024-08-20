@@ -21,10 +21,12 @@
 .button-container {
   display: flex;
   gap: 8px;
+  align-items: baseline;
 }
 
-#login-btn,
-#logout-btn {
+#login,
+#logout,
+#mypage {
   color: #7E95AA;
   padding: 16px 24px;
   background: none;
@@ -34,8 +36,11 @@
   cursor: pointer;
 }
 
-#sign-up-btn,
-#mypage-btn {
+#mypage {
+  color: white;
+}
+
+#sign-up {
   color: white;
   padding: 16px 24px;
   background: #FF1B6D;

@@ -3,12 +3,12 @@ import './Header.css';
 import Navbar from "./Navbar";
 import logo from '/logo.png';
 import useLogout from '../../hooks/useLogout';
-import useUserStore from '../../store/useUserStore';
+import useMyUser from '../../hooks/useMyUser';
 
 function Header() {
   const navigate = useNavigate();
   const handleLogout = useLogout();
-  const { user } = useUserStore();
+  const { user } = useMyUser();
 
   return (
     <header>
@@ -21,21 +21,21 @@ function Header() {
         <div className="button-container">
         { user ? (
             <>
-              <button id="logout-btn" onClick={handleLogout}>
+              <span id="logout" onClick={handleLogout}>
                 Logout
-              </button>
-              <button id="mypage-btn" onClick={() => {navigate(`/mypage`)}}>
+              </span>
+              <span id="mypage" onClick={() => {navigate(`/mypage`)}}>
                 {user.userName}님
-              </button>
+              </span>
             </>
           ) : (
             <>
-              <button id="login-btn" onClick={() => { navigate('/login') }}>
+              <span id="login" onClick={() => { navigate('/login') }}>
                 Login
-              </button>
-              <button id="sign-up-btn" onClick={() => { navigate('/register') }}>
+              </span>
+              <span id="sign-up" onClick={() => { navigate('/register') }}>
                 Sign up
-              </button>
+              </span>
             </>
           )}
         </div>
