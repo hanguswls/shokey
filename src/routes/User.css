@@ -32,7 +32,7 @@
   font-weight: 700;
 }
 
-.user-field-value, #no-user {
+.user-field-value {
   background-color: #2C353D;
   color: #FFFFFF;
 	border: none;
@@ -40,10 +40,6 @@
 	padding: 10px 14px;
 	width: 300px;
   font-size: 16px;
-}
-
-.user-field-input {
-  outline: none;
 }
 
 .toggle-group {

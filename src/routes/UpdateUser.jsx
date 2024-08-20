@@ -25,8 +25,8 @@ const UpdateUser = () => {
             name="id"
             className="user-field-value"
             value={user.userId || ''}
-            onChange={handleUserIdChange}>
-          </input>
+            onChange={handleUserIdChange}
+          />
         </div>
         <div className="user-field">
           <span className="user-field-name">패스워드</span>
@@ -35,8 +35,8 @@ const UpdateUser = () => {
             name="userPassword"
             className="user-field-value"
             value={user.userPassword || ''}
-            onChange={handleUserPasswordChange}>
-          </input>
+            onChange={handleUserPasswordChange}
+            />
         </div>
         <div className="user-field">
           <span className="user-field-name">이름</span>
