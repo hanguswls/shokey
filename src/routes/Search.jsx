@@ -12,7 +12,9 @@ function Search() {
     page,
     setPage,
     totalPages,
-    pagingBtn
+    pagingBtn,
+    niches,
+    handleNichesCheck
   } = useInfluencerList();
 
   return (
@@ -36,9 +38,11 @@ function Search() {
           <article className="filter-niche">
             <h4>Niche</h4>
             <ul>
-              <li>Food  (100)</li>
-              <li>Fashion  (100)</li>
-              <li>Travel  (100)</li>
+              {
+                niches.map((item, i) => {
+                  return (<li key={i}>{item}<input type='checkbox' value={item} onChange={handleNichesCheck} /></li>)
+                })
+              }
             </ul>
           </article>
         </aside>
