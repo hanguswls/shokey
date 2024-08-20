@@ -16,4 +16,15 @@ const getInfluencerList = async (page, size, sort) => {
   return res.json();
 }
 
-export { getInfluencerList };
+const getNiches = async () => {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/influencers/niches');
+
+  if (!res.ok) {
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+export { getInfluencerList, getNiches };
