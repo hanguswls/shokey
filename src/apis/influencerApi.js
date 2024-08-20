@@ -1,4 +1,4 @@
-const getInfluencerList = async (page, size, sort) => {
+const getInfluencerList = async (page, size, sort, niches) => {
   let sortStr = "";
   if (sort.length > 0) {
     sort.forEach(item => {
@@ -6,7 +6,12 @@ const getInfluencerList = async (page, size, sort) => {
     });
   }
 
-  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/influencers?page=${page}&size=${size}${sortStr}`);
+  let nichesStr = "";
+  if (niches) {
+    nichesStr = `&niche=${niches}`;
+  }
+
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/influencers?page=${page}&size=${size}${sortStr}${nichesStr}`);
 
   if (!res.ok) {
     const message = (await res.json()).statusMsg;
