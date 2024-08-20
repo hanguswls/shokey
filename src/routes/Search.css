@@ -86,10 +86,30 @@
   color: #7E95AA;
   margin-bottom: 12px;
   font-size: 14px;
+  display: flex;
 }
 
 .influencers-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+}
+
+.niches-check > input {
+  display: none;
+}
+
+.niches-check > input + label {
+  display: inline-block;
+  border: 0;
+  width: 16px;
+  height: 16px;
+  background: #7E95AA;
+  border-radius: 4px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.niches-check > input:checked + label {
+  background: url('/checkbox_checked.png');
 }

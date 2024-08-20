@@ -13,11 +13,9 @@ import PostDetail from './routes/PostDetail'
 import UpdateUser from './routes/UpdateUser'
 import ViewUser from './routes/ViewUser'
 import ViewMyUser from './routes/ViewMyUser'
-import useInitializeUser from './hooks/useInitializeUser'
 
 function App() {
 	useRefresh();
-  useInitializeUser();
 
   return (
     <div>

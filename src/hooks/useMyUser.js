@@ -1,67 +1,35 @@
-import { putUser, deleteUser } from '../apis/userApi';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useCookies } from 'react-cookie';
+import { getMyUser } from '../apis/userApi';
 import useUserStore from '../store/useUserStore';
 
+// accessToken이 바뀔 때 user 정보를 받아와 useUserStore에 전역상태로 저장
 const useMyUser = () => {
-  const [cookies, _ , removeCookies] = useCookies(['accessToken', 'refreshToken']);
-  const navigate = useNavigate();
+  const [cookies] = useCookies(['accessToken']);
   const { user, setUser } = useUserStore();
 
-  const handleUserIdChange = (e) => {
-    setUser({...user, userId: e.target.value});
-  }
+  useEffect(() => {
+    fetchUser();
+  }, [cookies.accessToken]);
 
-  const handleUserPasswordChange = (e) => {
-    setUser({...user, userPassword: e.target.value});
-  }
-
-  const handleUserNameChange = (e) => {
-    setUser({...user, userName: e.target.value});
-  };
-
-  const handleUserEmailChange = (e) => {
-    setUser({...user, userEmail: e.target.value});
-  };
-
-  const handleToggle = (field, value) => {
-    setUser({...user, [field]: value});
-  };
-
-  const handleUpdateUser = async () => {
-    try {
-      await putUser(user, cookies.accessToken);
-      alert('사용자 정보가 수정되었습니다.');
-      navigate('/mypage');
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-  const handleDeleteUser = async () => {
-    const isConfirmed = window.confirm('정말로 탈퇴하시겠습니까?');
-    if (!isConfirmed) return;
-    try {
-      await deleteUser(cookies.accessToken);
+  const fetchUser = async () => {
+    if (cookies.accessToken) {
+      try {
+        const res = await getMyUser(cookies.accessToken);
+        setUser(res.data);
+      } catch (error) {
+        alert(error.message);
+        setUser(null);
+      }
+    } else {
       setUser(null);
-      removeCookies('accessToken');
-      removeCookies('refreshToken');
-      alert('사용자 정보가 탈퇴되었습니다.');
-    } catch (error) {
-      alert(error.message);
     }
   };
 
-  return {
+  return ({
     user,
-    handleUserIdChange,
-    handleUserPasswordChange,
-    handleUserNameChange,
-    handleUserEmailChange,
-    handleUpdateUser,
-    handleToggle,
-    handleDeleteUser,
-  };
-}
+    setUser,
+  })
+};
 
-export default useMyUser
+export default useMyUser;
