@@ -9,6 +9,12 @@ function useInfluencerList() {
   const [niches, setNiches] = useState([]);
   const [checkedNiches, setCheckedNiches] = useState([]);
 
+  const handleClearAllClick = () => {
+    setNiches([]);
+    updateNichesFromServer();
+    setCheckedNiches([]);
+  }
+
   const updateNichesFromServer = async () => {
     try {
       const res = await getNiches();
@@ -61,7 +67,8 @@ function useInfluencerList() {
     totalPages,
     pagingBtn,
     niches,
-    handleNichesCheck
+    handleNichesCheck,
+    handleClearAllClick
   };
 }
 

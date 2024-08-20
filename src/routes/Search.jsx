@@ -14,7 +14,8 @@ function Search() {
     totalPages,
     pagingBtn,
     niches,
-    handleNichesCheck
+    handleNichesCheck,
+    handleClearAllClick
   } = useInfluencerList();
 
   return (
@@ -30,7 +31,7 @@ function Search() {
           <div className="filter-title-wrapper">
             <img src={filterIcon} alt="filter-icon" />
             <h3>Filter</h3>
-            <span>
+            <span onClick={handleClearAllClick}>
               Clear All 
               <img src={clearIcon} alt="clear-icon" />
             </span>
@@ -40,7 +41,11 @@ function Search() {
             <ul>
               {
                 niches.map((item, i) => {
-                  return (<li key={i}>{item}<input type='checkbox' value={item} onChange={handleNichesCheck} /></li>)
+                  return (<li key={i} className='niches-check'>
+                            {item}
+                            <input id={item} type='checkbox' value={item} onChange={handleNichesCheck} />
+                            <label htmlFor={item}></label>
+                          </li>)
                 })
               }
             </ul>
