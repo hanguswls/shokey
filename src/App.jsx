@@ -10,9 +10,11 @@ import CreatePost from './routes/CreatePost'
 import Posts from './routes/Posts'
 import Search from './routes/Search'
 import PostDetail from './routes/PostDetail'
+import useInitializeUser from './hooks/useInitializeUser'
 
 function App() {
 	useRefresh();
+  useInitializeUser();
 
   return (
     <div>
