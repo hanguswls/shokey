@@ -1,5 +1,5 @@
 import './Apply.css';
-import { useOutlet, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { handleTextareaChange } from "../utils/textareaHandler";
 import plusIcon from '../assets/plus_icon.png';
 import { useEffect, useRef, useState } from 'react';
