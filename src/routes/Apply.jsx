@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { handleTextareaChange } from "../utils/textareaHandler";
 import plusIcon from '../assets/plus_icon.png';
 import { useEffect, useRef, useState } from 'react';
+import { postApply } from '../apis/applyApi';
+import { useCookies } from 'react-cookie';
 
 function Apply() {
   const input = useRef();
@@ -11,6 +13,7 @@ function Apply() {
   const [videoUrl, setVideoUrl] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [cookies] = useCookies(['accessToken']);
 
   useEffect(() => {
     if (uploadVideo) {
@@ -51,7 +54,19 @@ function Apply() {
       return;
     }
 
-    console.log(title,description, uploadVideo);
+    const applyData = {
+      title: title,
+      content: description,
+      videoLink: ""
+    };
+
+    postApply(applyData, cookies.accessToken)
+      .then((res) => {
+        alert('지원했습니다.');
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
   }
 
   return (
@@ -73,7 +88,7 @@ function Apply() {
           </button>
           <input type="file" accept='video/*' ref={input} onChange={handleFileInputChange} />
         </figure>
-        <textarea rows={8}placeholder="지원 내용" onChange={handleDescriptionChange}></textarea>
+        <textarea rows={8} placeholder="지원 내용" onChange={handleDescriptionChange}></textarea>
         <button type='submit' onClick={handleSubmitClick}>
           지원하기
         </button>
