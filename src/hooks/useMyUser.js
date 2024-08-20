@@ -4,15 +4,15 @@ import { getMyUser } from '../apis/userApi';
 import useUserStore from '../store/useUserStore';
 
 // accessToken이 바뀔 때 user 정보를 받아와 useUserStore에 전역상태로 저장
-const useInitializeUser = () => {
+const useMyUser = () => {
   const [cookies] = useCookies(['accessToken']);
-  const { setUser } = useUserStore();
+  const { user, setUser } = useUserStore();
 
   useEffect(() => {
-    initializeUser();
+    fetchUser();
   }, [cookies.accessToken]);
 
-  const initializeUser = async () => {
+  const fetchUser = async () => {
     if (cookies.accessToken) {
       try {
         const res = await getMyUser(cookies.accessToken);
@@ -25,6 +25,11 @@ const useInitializeUser = () => {
       setUser(null);
     }
   };
+
+  return ({
+    user,
+    setUser,
+  })
 };
 
-export default useInitializeUser;
+export default useMyUser;
