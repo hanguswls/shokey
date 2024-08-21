@@ -1,0 +1,85 @@
+.no-user {
+  color: white;
+}
+
+.user-container {
+	display: flex;
+	flex-direction: column;
+	gap: 50px;
+	max-width: 461px;
+	margin: 0 auto;
+	color: #FFFFFF;
+  padding: 50px 0 100px 0;
+	font-size: 16px;
+}
+
+.user-title {
+	text-align: center;
+	font-weight: 600;
+	font-size: 25px;
+}
+
+.user-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	font-weight: 400;
+}
+
+.user-field-name {
+  font-weight: 700;
+}
+
+.user-field-value {
+  background-color: #2C353D;
+  color: #FFFFFF;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 14px;
+	width: 300px;
+  font-size: 16px;
+}
+
+.toggle-group {
+  display: flex;
+  gap: 10px;
+  width: 328px;
+}
+
+.toggle-button {
+  background-color: #2C353D;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+	padding: 10px 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.toggle-button.active {
+  background-color: #FF1B6D;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.update-button, .delete-button {
+	border-radius: 16px;
+	background-color: #FF1B6D;
+	color: #FFFFFF;
+	padding: 12px 24px;
+	font-weight: 700;
+	cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+}
