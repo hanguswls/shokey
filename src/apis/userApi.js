@@ -17,6 +17,12 @@ const getMyUser = (accessToken) =>
     headers: { 'Authorization': `Bearer ${accessToken}` },
   });
 
+const getUser = (id) =>
+  fetchAPI(`/api/users/${id}`, {
+    method: 'GET',
+  });
+
 export {
   getMyUser,
+  getUser,
 };
