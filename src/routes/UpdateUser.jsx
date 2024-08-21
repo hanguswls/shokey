@@ -1,6 +1,7 @@
 import React from 'react';
 import './User.css';
 import useManageMyUser from '../hooks/useManageMyUser';
+import { useNavigate } from 'react-router-dom';
 
 const UpdateUser = () => {
   const {
@@ -9,12 +10,14 @@ const UpdateUser = () => {
     handleUpdateUser,
     handleDeleteUser,
   } = useManageMyUser();
+  const navigate = useNavigate();
 
-  if (!updatedUser) return (
-    <div className='no-user'>
-      사용자 없음
-    </div>
-  )
+  useEffect(() => {
+    if (!updatedUser) {
+      alert('존재하지 않는 사용자입니다.');
+      navigate('/');
+    }
+  }, [])
 
   return (
     <div className="user-container">

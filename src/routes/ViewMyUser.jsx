@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import useManageMyUser from '../hooks/useManageMyUser';
 import useMyUser from '../hooks/useMyUser';
 import './User.css';
@@ -7,12 +7,14 @@ import './User.css';
 const ViewMyUser = () => {
   const { user } = useMyUser();
   const { handleDeleteUser } = useManageMyUser();
+  const navigate = useNavigate();
 
-  if (!user) return (
-    <div className='no-user'>
-      사용자 없음
-    </div>
-  )
+  useEffect(() => {
+    if (!user) {
+      alert('존재하지 않는 사용자입니다.');
+      navigate('/login');
+    }
+  }, []);
 
   return (
     <div className="user-container">
