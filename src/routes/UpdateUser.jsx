@@ -1,11 +1,14 @@
-import React from 'react';
+import { useEffect } from 'react';
 import './User.css';
 import useManageMyUser from '../hooks/useManageMyUser';
 import { useNavigate } from 'react-router-dom';
+import useMyUser from '../hooks/useMyUser';
 
 const UpdateUser = () => {
+  const {user} = useMyUser();
   const {
     updatedUser,
+    handleUserGenderToggle,
     handleUserChange,
     handleUpdateUser,
     handleDeleteUser,
@@ -13,7 +16,7 @@ const UpdateUser = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!updatedUser) {
+    if (!user) {
       alert('로그인이 필요한 서비스입니다.');
       navigate('/login');
     }
@@ -41,7 +44,7 @@ const UpdateUser = () => {
             className="user-field-value"
             value={updatedUser?.userPassword || ''}
             onChange={handleUserChange}
-            />
+          />
         </div>
         <div className="user-field">
           <span className="user-field-name">이름</span>
@@ -58,17 +61,15 @@ const UpdateUser = () => {
           <div className="toggle-group">
             <button
               name="userGender"
-              value={true}
               className={`toggle-button ${updatedUser?.userGender ? 'active' : ''}`}
-              onClick={handleUserChange}
+              onClick={handleUserGenderToggle}
             >
               남성
             </button>
             <button
               name="userGender"
-              value={false}
               className={`toggle-button ${!updatedUser?.userGender ? 'active' : ''}`}
-              onClick={() => handleToggle('userGender', false)}
+              onClick={handleUserGenderToggle}
             >
               여성
             </button>

@@ -19,9 +19,17 @@ const useManageMyUser = () => {
 
   useEffect(() => {
     if (user) {
-      setUpdatedUser(user);
+      setUpdatedUser({...user});
     }
   }, [user]);
+
+  useEffect(()=>{
+    console.table(updatedUser);
+  }, [updatedUser]);
+
+  const handleUserGenderToggle = () => {
+    setUpdatedUser(prev => ({...prev, userGender: !updatedUser.userGender }))
+  }
 
   const handleUserChange = (e) => {
     const { name, value } = e.target;
@@ -30,8 +38,7 @@ const useManageMyUser = () => {
 
   const handleUpdateUser = async () => {
     try {
-      await putUser(user, cookies.accessToken);
-      setUser(updatedUser);
+      await putUser(updatedUser, cookies.accessToken);
       alert('사용자 정보가 수정되었습니다.');
       navigate('/mypage');
     } catch (error) {
@@ -44,12 +51,11 @@ const useManageMyUser = () => {
     if (!isConfirmed) return;
     try {
       await deleteUser(cookies.accessToken);
-      setUser(null);
-      setUpdatedUser(null);
       removeCookies('accessToken');
       removeCookies('refreshToken');
       alert('탈퇴되었습니다.');
       logout();
+      navigate('/');
     } catch (error) {
       alert(error.message);
     }
@@ -57,6 +63,7 @@ const useManageMyUser = () => {
 
   return {
     updatedUser,
+    handleUserGenderToggle,
     handleUserChange,
     handleUpdateUser,
     handleDeleteUser,
