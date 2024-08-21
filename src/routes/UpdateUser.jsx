@@ -14,8 +14,8 @@ const UpdateUser = () => {
 
   useEffect(() => {
     if (!updatedUser) {
-      alert('존재하지 않는 사용자입니다.');
-      navigate('/');
+      alert('로그인이 필요한 서비스입니다.');
+      navigate('/login');
     }
   }, [])
 
@@ -29,7 +29,7 @@ const UpdateUser = () => {
             type="text"
             name="userId"
             className="user-field-value"
-            value={updatedUser.userId || ''}
+            value={updatedUser?.userId || ''}
             onChange={handleUserChange}
           />
         </div>
@@ -39,7 +39,7 @@ const UpdateUser = () => {
             type="password"
             name="userPassword"
             className="user-field-value"
-            value={updatedUser.userPassword || ''}
+            value={updatedUser?.userPassword || ''}
             onChange={handleUserChange}
             />
         </div>
@@ -48,7 +48,7 @@ const UpdateUser = () => {
           <input
             type="text"
             name="userName"
-            value={updatedUser.userName}
+            value={updatedUser?.userName}
             onChange={handleUserChange}
             className="user-field-value"
           />
@@ -59,7 +59,7 @@ const UpdateUser = () => {
             <button
               name="userGender"
               value={true}
-              className={`toggle-button ${updatedUser.userGender ? 'active' : ''}`}
+              className={`toggle-button ${updatedUser?.userGender ? 'active' : ''}`}
               onClick={handleUserChange}
             >
               남성
@@ -67,7 +67,7 @@ const UpdateUser = () => {
             <button
               name="userGender"
               value={false}
-              className={`toggle-button ${!updatedUser.userGender ? 'active' : ''}`}
+              className={`toggle-button ${!updatedUser?.userGender ? 'active' : ''}`}
               onClick={() => handleToggle('userGender', false)}
             >
               여성
@@ -79,7 +79,7 @@ const UpdateUser = () => {
           <input
             type="text"
             name="userEmail"
-            value={updatedUser.userEmail || ''}
+            value={updatedUser?.userEmail || ''}
             onChange={handleUserChange}
             className="user-field-value"
           />
