@@ -25,16 +25,16 @@ function AppliedPostCard(props) {
       </figure>
       <h4 className="applied-post-card-title">{ title }</h4>
       <span className="applied-post-card-user">{ user }</span>
-      {/* {accepted && ( */}
+      {accepted && (
         <figure className="accepted-mark">
           <img src={acceptedMark} alt="accepted-mark" />
         </figure>
-      {/* )} */}
-      {/* {bidded && ( */}
+      )}
+      {bidded && (
         <figure className="bidded-mark">
           <img src={biddedMark} alt="bidded-mark" />
         </figure>
-      {/* )} */}
+      )}
     </article>
   );
 }
