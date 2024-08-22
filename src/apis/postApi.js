@@ -51,4 +51,22 @@ const getPost = async (id) => {
   return res.json();
 }
 
-export { uploadPost, getPostList, getPost };
+const getMyPostList = async (page, size, sort) => {
+  let sortStr = "";
+  if (sort.length > 0) {
+    sort.forEach(item => {
+      sortStr += `&sort=${item}`;
+    });
+  }
+
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/posts/my?page=${page}&size=${size}${sortStr}`);
+
+  if (!res.ok) {
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+export { uploadPost, getPostList, getPost, getMyPostList };
