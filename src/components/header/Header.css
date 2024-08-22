@@ -50,3 +50,33 @@
   cursor: pointer;
   border-radius: 16px;
 }
+
+.user-menu {
+  position: relative;
+}
+
+.user-menu-options {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background-color: #2C353D;
+  border-radius: 8px;
+}
+
+.user-menu:hover .user-menu-options {
+  display: block;
+  border-radius: 8px;
+}
+
+.user-menu-options span {
+  display: block;
+  padding: 8px 16px;
+  color: #7E95AA;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.user-menu-options span:hover {
+  color: white;
+}

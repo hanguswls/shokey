@@ -27,9 +27,9 @@ function Header() {
               <div className="user-menu">
                 <span id="mypage">{user.userName}님</span>
                 <div className="user-menu-options">
-                  <span onClick={() => navigate('/mypage')}>마이페이지</span>
-                  <span onClick={() => navigate('/my-influencer')}>인플루언서 페이지</span>
-                  <span onClick={() => navigate('/advertiser')}>광고주 페이지</span>
+                  <span onClick={() => navigate('/mypage')}>My Page</span>
+                  <span onClick={() => navigate('/my-influencer')}>Influencer</span>
+                  <span onClick={() => navigate('/advertiser')}>Advertiser</span>
                 </div>
               </div>
             </>
