@@ -32,4 +32,24 @@ const getNiches = async () => {
   return res.json();
 }
 
-export { getInfluencerList, getNiches };
+const getInfluencer = async (influencerId) => {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/influencers/${influencerId}`, {
+    method: 'GET',
+    headers: {
+    'Content-Type': 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+export {
+  getInfluencerList,
+  getNiches,
+  getInfluencer,
+};
