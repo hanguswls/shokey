@@ -24,9 +24,14 @@ function Header() {
               <span id="logout" onClick={handleLogout}>
                 Logout
               </span>
-              <span id="mypage" onClick={() => {navigate(`/mypage`)}}>
-                {user.userName}님
-              </span>
+              <div className="user-menu">
+                <span id="mypage">{user.userName}님</span>
+                <div className="user-menu-options">
+                  <span onClick={() => navigate('/mypage')}>마이페이지</span>
+                  <span onClick={() => navigate('/my-influencer')}>인플루언서 페이지</span>
+                  <span onClick={() => navigate('/advertiser')}>광고주 페이지</span>
+                </div>
+              </div>
             </>
           ) : (
             <>
