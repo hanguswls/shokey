@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "./AppliedPostCard.css";
-import acceptedMark from "/public/accepted_mark.png";
-import biddedMark from "/public/bidded_mark.png";
+import acceptedMark from "/public/accepted_mark.svg";
+import biddedMark from "/public/bidded_mark.svg";
 
 function AppliedPostCard(props) {
   const navigate = useNavigate();
