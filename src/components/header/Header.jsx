@@ -7,7 +7,7 @@ import useMyUser from '../../hooks/useMyUser';
 
 function Header() {
   const navigate = useNavigate();
-  const handleLogout = useLogout();
+  const logout = useLogout();
   const { user } = useMyUser();
 
   return (
@@ -21,12 +21,17 @@ function Header() {
         <div className="button-container">
         { user ? (
             <>
-              <span id="logout" onClick={handleLogout}>
+              <span id="logout" onClick={logout}>
                 Logout
               </span>
-              <span id="mypage" onClick={() => {navigate(`/mypage`)}}>
-                {user.userName}님
-              </span>
+              <div className="user-menu">
+                <span id="mypage">{user.userName}님</span>
+                <div className="user-menu-options">
+                  <span onClick={() => navigate('/mypage')}>My Page</span>
+                  <span onClick={() => navigate('/my-influencer')}>Influencer</span>
+                  <span onClick={() => navigate('/advertiser')}>Advertiser</span>
+                </div>
+              </div>
             </>
           ) : (
             <>
