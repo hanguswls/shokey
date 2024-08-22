@@ -8,11 +8,12 @@ function PostCard(props) {
     user,
     content,
     id,
-    num
+    num,
+    clickHandler
   } = props;
 
   return (
-    <article className="post-card" onClick={() => { navigate('/post/' + id) }}>
+    <article className="post-card" onClick={clickHandler}>
       <figure className="post-card-image">
         <img src={"https://picsum.photos/500.jpg?random=" + num} alt="post" />
       </figure>

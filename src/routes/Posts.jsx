@@ -35,6 +35,7 @@ function Posts() {
             postList.map((item, i) => {
               return (
                 <PostCard
+                  clickHandler={() => { navigate('/post/' + item.id) }}
                   key={i}
                   num={i}
                   id={item.id}

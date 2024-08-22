@@ -51,7 +51,7 @@ const getPost = async (id) => {
   return res.json();
 }
 
-const getMyPostList = async (page, size, sort) => {
+const getMyPostList = async (page, size, sort, token) => {
   let sortStr = "";
   if (sort.length > 0) {
     sort.forEach(item => {
@@ -59,7 +59,11 @@ const getMyPostList = async (page, size, sort) => {
     });
   }
 
-  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/posts/my?page=${page}&size=${size}${sortStr}`);
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/posts/my?page=${page}&size=${size}${sortStr}`, {
+    headers: {
+      'authorization': 'Bearer ' + token
+    }
+  });
 
   if (!res.ok) {
     const message = (await res.json()).statusMsg;
