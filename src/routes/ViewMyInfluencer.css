@@ -1,0 +1,37 @@
+.influencer-applied-list {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.label-filter {
+	width: 1120px;
+	display: flex;
+	justify-content: space-between;
+  align-items: center;
+}
+
+.label-filter > span {
+	font-weight: 600;
+	font-size:18px;
+	color: #FFFFFF;
+}
+
+.applied-posts-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.filter-options {
+  padding: 6px;
+  padding-right: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #7E95AA;
+  background-color: #2C353D;
+  border-radius: 8px;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+}
