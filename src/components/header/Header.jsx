@@ -7,7 +7,7 @@ import useMyUser from '../../hooks/useMyUser';
 
 function Header() {
   const navigate = useNavigate();
-  const handleLogout = useLogout();
+  const logout = useLogout();
   const { user } = useMyUser();
 
   return (
@@ -21,7 +21,7 @@ function Header() {
         <div className="button-container">
         { user ? (
             <>
-              <span id="logout" onClick={handleLogout}>
+              <span id="logout" onClick={logout}>
                 Logout
               </span>
               <div className="user-menu">
