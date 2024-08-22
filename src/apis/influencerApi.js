@@ -32,4 +32,62 @@ const getNiches = async () => {
   return res.json();
 }
 
-export { getInfluencerList, getNiches };
+const getInfluencer = async (influencerId) => {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/influencers/${influencerId}`, {
+    method: 'GET',
+    headers: {
+    'Content-Type': 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+const postInfluencer = async (influencer, accessToken) => {
+	const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/influencers', {
+	  method: 'POST',
+	  headers: {
+	    'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+	  },
+	  body: JSON.stringify(influencer),
+	});
+
+	if (!res.ok) {
+	  const message = (await res.json()).statusMsg;
+	  throw new Error(message);
+	}
+
+	return res.json();
+};
+
+const putInfluencer = async (influencer, accessToken) => {
+	const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/influencers', {
+	  method: 'PUT',
+	  headers: {
+	    'Content-Type': 'application/json',
+      'Authorization': `Bearer ${accessToken}`
+	  },
+	  body: JSON.stringify(influencer),
+	});
+
+	if (!res.ok) {
+	  const message = (await res.json()).statusMsg;
+	  throw new Error(message);
+	}
+
+	return res.json();
+};
+
+export {
+  getInfluencerList,
+  getNiches,
+  getInfluencer,
+  postInfluencer,
+  putInfluencer,
+};
