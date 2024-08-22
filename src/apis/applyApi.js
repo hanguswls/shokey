@@ -1,5 +1,5 @@
-const postApply = async (applyData, token) => {
-  const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/applies', {
+const postApply = async (applyData, postId, token) => {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/applies?post_id=' + postId, {
     method: 'POST',
     headers: {
       'authorization': 'Bearer ' + token,
