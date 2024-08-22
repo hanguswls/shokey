@@ -1,41 +1,29 @@
-import { useNavigate } from 'react-router-dom';
-import PostCard from '../components/card/PostCard';
-import usePostList from '../hooks/usePostList';
-import './Posts.css';
-import { useCookies } from 'react-cookie';
+import './MyPosts.css';
+import PostCard from "../components/card/PostCard";
+import useMyPostList from '../hooks/useMyPostList';
 import PagingButton from '../components/button/PagingButton/PagingButton';
+import { useNavigate } from 'react-router-dom';
 
-function Posts() {
+function MyPosts() {
   const {
     postList,
     page,
     setPage,
     totalPages,
     pagingBtn
-  } = usePostList();
+  } = useMyPostList();
   const navigate = useNavigate();
-  const [cookies] = useCookies(['accessToken']);
 
   return (
-    <main className="posts">
+    <main className="my-posts">
       <section className="posts-inner">
-        <h2 className="posts-title">공고 둘러보기</h2>
-        {
-          cookies.accessToken ? 
-          <section className="posts-btn-wrapper">
-            <button className="post-btn" onClick={() => {
-              navigate('/upload');
-            }}>
-              공고 등록하기
-            </button>
-          </section> : null
-        }
+        <h2 className="posts-title">나의 공고 목록</h2>
         <section className="posts-container">
-          {
+        {
             postList.map((item, i) => {
               return (
                 <PostCard
-                  clickHandler={() => { navigate('/post/' + item.id) }}
+                  clickHandler={() => { navigate('/applies/' + item.id) }}
                   key={i}
                   num={i}
                   id={item.id}
@@ -58,4 +46,4 @@ function Posts() {
   )
 }
 
-export default Posts;
+export default MyPosts;

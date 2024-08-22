@@ -15,6 +15,7 @@ import UpdateUser from './routes/UpdateUser'
 import ViewUser from './routes/ViewUser'
 import ViewMyUser from './routes/ViewMyUser'
 import ViewInfluencer from './routes/ViewInfluencer'
+import MyPosts from './routes/MyPosts'
 
 function App() {
 	useRefresh();
@@ -35,6 +36,7 @@ function App() {
 				<Route path='/update-user' element={<UpdateUser />} />
 				<Route path='/mypage' element={<ViewMyUser />} />
         <Route path='/influencers/:id' element={<ViewInfluencer />} />
+        <Route path='/myposts' element={<MyPosts />} />
       </Routes>
       <Footer />
     </div>
