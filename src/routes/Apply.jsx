@@ -5,6 +5,7 @@ import plusIcon from '../assets/plus_icon.png';
 import { useEffect, useRef, useState } from 'react';
 import { postApply } from '../apis/applyApi';
 import { useCookies } from 'react-cookie';
+import { postFile } from '../apis/fileApi';
 
 function Apply() {
   const input = useRef();
@@ -36,7 +37,7 @@ function Apply() {
     handleTextareaChange(e);
   }
 
-  const handleSubmitClick = (e) => {
+  const handleSubmitClick = async (e) => {
     e.preventDefault();
 
     if (!title.trim()) {
@@ -54,10 +55,22 @@ function Apply() {
       return;
     }
 
+    const formdata = new FormData();
+    formdata.append('file', uploadVideo);
+    let uploadedVideoLink;
+
+    try {
+      const res = await postFile(formdata, cookies.accessToken);
+      uploadedVideoLink = res.data;
+    } catch (err) {
+      alert(err.message);
+      return;
+    }
+
     const applyData = {
       title: title,
       content: description,
-      videoLink: ""
+      videoLink: uploadedVideoLink
     };
 
     postApply(applyData, cookies.accessToken)
