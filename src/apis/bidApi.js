@@ -9,6 +9,12 @@ const fetchApi = async (endPoint, options) => {
   return res.json();
 }
 
+/**
+ * 특정 지원 항목을 입찰 등록하는 api 함수.
+ * @param {number} applyId 지원 공고 id
+ * @param {string} token 사용자 accessToken
+ * @returns api response
+ */
 const registerBidApi = (applyId, token) => {
   return fetchApi(`/api/applies/${applyId}/bids`, {
     headers: {
@@ -17,4 +23,18 @@ const registerBidApi = (applyId, token) => {
   });
 }
 
-export { registerBidApi };
+/**
+ * 입찰 등록된 특정 지원 항목을 승인하는 api 함수.
+ * @param {number} applyId 지원 공고 id
+ * @param {string} token 사용자 accessToken
+ * @returns api response
+ */
+const acceptBidApi = (applyId, token) => {
+  return fetchApi(`/api/applies/${applyId}/bids`, {
+    headers: {
+      'authorization': 'Bearer ' + token
+    }
+  });
+}
+
+export { registerBidApi, acceptBidApi };
