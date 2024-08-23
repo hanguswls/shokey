@@ -1,5 +1,5 @@
 const fetchApi = async (endPoint, options) => {
-  const res = fetch(import.meta.env.VITE_APP_API_URL + endPoint, options);
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + endPoint, options);
 
   if (!res.ok) {
     const message = (await res.json()).statusMsg;
