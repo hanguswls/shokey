@@ -14,9 +14,7 @@ function usePostApplies() {
         const res = await getAppliesWithPostId(id, cookies.accessToken);
         setApplies(res.data);
       }
-      catch (err) {
-        alert(err.message);
-      }
+      catch (err) { alert(err.message); }
     }
   }
 
@@ -24,7 +22,7 @@ function usePostApplies() {
     getApplyDataFromServer();
   }, [cookies, id]);
 
-  return { applies };
+  return { applies, getApplyDataFromServer };
 }
 
 export default usePostApplies;

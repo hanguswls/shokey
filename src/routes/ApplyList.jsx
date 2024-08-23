@@ -5,7 +5,7 @@ import './ApplyList.css';
 
 function ApplyList() {
   const { post } = usePostDetail();
-  const { applies } = usePostApplies();
+  const { applies, getApplyDataFromServer } = usePostApplies();
 
   return (
     <main className="apply-list">
@@ -15,8 +15,8 @@ function ApplyList() {
           <section className="applies-sticky-content">
             <section>
               <article className="title-wrapper">
-                <h3>{post?.authorName}</h3>
-                <h1>{post?.title}</h1>
+                <h3>{ post?.authorName }</h3>
+                <h1>{ post?.title }</h1>
               </article>
               <article className="content-wrapper">
                 <figure className="post-detail-image">
@@ -26,9 +26,9 @@ function ApplyList() {
               </article>
               <article className="post-detail-conditions">
                 <ul>
-                  <li>마감일<div>{post?.endDate}</div></li>
-                  <li>인센티브<div>{Number(post?.extraPrice).toLocaleString()}<span>원</span></div></li>
-                  <li>계약금<div>{Number(post?.price).toLocaleString()}<span>원</span></div></li>
+                  <li>마감일<div>{ post?.endDate }</div></li>
+                  <li>인센티브<div>{ Number(post?.extraPrice).toLocaleString() }<span>원</span></div></li>
+                  <li>계약금<div>{ Number(post?.price).toLocaleString() }<span>원</span></div></li>
                 </ul>
               </article>
             </section>
@@ -38,11 +38,13 @@ function ApplyList() {
               applies.map((apply, i) => {
                 return <ApplyCard
                   key={i}
+                  applyId={apply.applyId}
                   title={apply.title} 
                   influencerName={apply.influencerName}
                   content={apply.content}
                   videoLink={apply.videoLink}
-                  createdAt={apply.appliedAt} /> })
+                  createdAt={apply.appliedAt}
+                  updateAppliesData={getApplyDataFromServer} /> })
             }
           </section>
         </section>
