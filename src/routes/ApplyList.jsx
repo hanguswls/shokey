@@ -37,11 +37,12 @@ function ApplyList() {
             { 
               applies.map((apply, i) => {
                 return <ApplyCard
-                  key={i} 
+                  key={i}
                   title={apply.title} 
                   influencerName={apply.influencerName}
                   content={apply.content}
-                  videoLink={apply.videoLink} /> })
+                  videoLink={apply.videoLink}
+                  createdAt={apply.appliedAt} /> })
             }
           </section>
         </section>

@@ -3,14 +3,16 @@ function ApplyCard(props) {
     title,
     influencerName,
     content,
-    videoLink
+    videoLink,
+    createdAt
   } = props;
 
   return (
     <article className="apply-card">
       <figure>
-        <video src={videoLink} controls={true}/>
+        <video src={ videoLink } controls={true}/>
       </figure>
+      <span>{ createdAt }</span>
       <h3>{ title }</h3>
       <span>{ influencerName }</span>
       <p>{ content }</p>
