@@ -7,7 +7,7 @@ const getInfluencerList = async (page, size, sort, niches) => {
   }
 
   let nichesStr = "";
-  if (niches) {
+  if (niches.length > 0) {
     nichesStr = `&niche=${niches}`;
   }
 
