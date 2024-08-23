@@ -1,9 +1,11 @@
 import ApplyCard from '../components/card/ApplyCard';
+import usePostApplies from '../hooks/usePostApplies';
 import usePostDetail from '../hooks/usePostDetail';
 import './ApplyList.css';
 
 function ApplyList() {
   const { post } = usePostDetail();
+  const { applies } = usePostApplies();
 
   return (
     <main className="apply-list">
@@ -32,6 +34,15 @@ function ApplyList() {
             </section>
           </section>
           <section>
+            { 
+              applies.map((apply, i) => {
+                return <ApplyCard
+                  key={i} 
+                  title={apply.title} 
+                  influencerName={apply.influencerName}
+                  content={apply.content}
+                  videoLink={apply.videoLink} /> })
+            }
           </section>
         </section>
       </section>
