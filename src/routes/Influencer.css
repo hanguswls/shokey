@@ -1,33 +1,28 @@
 .influencer-container {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 50px;
-	max-width: 461px;
+	max-width: 1120px;
 	margin: 0 auto;
 	color: #FFFFFF;
   padding: 50px 0 100px 0;
 	font-size: 16px;
 }
 
-.influencer-title {
-	text-align: center;
-	font-weight: 600;
-	font-size: 25px;
-}
-
-/* RegisterInfluencer.jsx, UpdateInfluencer.jsx에서 사용 */
-.profile-upload {
+.influencer-info-container {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 40px;
+	flex-direction: column;
+	gap: 50px;
+	max-width: 461px;
 }
 
-/* ViewInfluencer.jsx, ViewMyInfluencer.jsx에서 사용 */
+.profile-upload,
 .profile-image-section {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	gap: 33px;
 }
 
 .profile-image {
@@ -61,13 +56,21 @@
 	display: none;
 }
 
+.influencer-user-name {
+	color: #FFFFFF;
+	font-weight: 600;
+	font-size: 32px;
+}
+
 .influencer-fields {
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
+	width: 100%;
 }
 
 .influencer-field {
+	width: 461px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

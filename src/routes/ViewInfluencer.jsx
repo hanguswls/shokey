@@ -1,15 +1,22 @@
 import './Influencer.css';
 import useInfluencer from '../hooks/useInfluencer';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 function ViewInfluencer() {
   const { id } = useParams();
   const { influencer }= useInfluencer(id);
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if (!influencer) {
+      alert('존재하지 않는 사용자입니다.');
+      navigate('/');
+    }
+  }, []);
 
   return (
     <main className='influencer-container'>
-      { influencer ?
-      <>
       <h1 className='influencer-title'>인플루언서 정보</h1>
       <section className='profile-image-section'>
         <figure className='profile-image'>
@@ -32,11 +39,6 @@ function ViewInfluencer() {
           <div className='influencer-field-value'>{influencer?.niche}</div>
         </div>
       </section>
-      </> :
-      <div>
-        존재하지 않는 인플루언서입니다.
-      </div>
-    }
     </main>
   );
 }
