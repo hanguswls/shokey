@@ -4,7 +4,11 @@
   background: #2C353D;
   border: none;
   border-radius: 8px;
-  color: grey;
+  color: white;
   box-sizing: border-box;
   outline: none;
+}
+
+.input-field ::placeholder {
+  color: grey;
 }
