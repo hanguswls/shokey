@@ -2,7 +2,7 @@ import './Influencer.css';
 import './ViewMyInfluencer.css';
 import useMyInfluencer from '../hooks/useMyInfluencer';
 import useMyUser from '../hooks/useMyUser';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import AppliedPostCard from '../components/card/AppliedPostCard';
 import useMyApplyList from '../hooks/useMyApplyList';
@@ -10,18 +10,19 @@ import useMyApplyList from '../hooks/useMyApplyList';
 function ViewMyInfluencer() {
   const navigate = useNavigate();
   const { user } = useMyUser();
-  const { myInfluencer, handleNavigateToUpdate } = useMyInfluencer(user?.influencerId);
+  const { myInfluencer } = useMyInfluencer(user?.influencerId);
   const { filteredApplyList, handleApplyListFilterChange } = useMyApplyList(user?.influencerId);
 
   useEffect(() => {
     if (!user) {
       alert('로그인이 필요한 서비스입니다.');
       navigate('/login');
-    } else if (!user.influencerId) {
+    }
+    else if (!user?.userRole) {
       alert('인플루언서 등록을 해주세요');
       navigate('/register-influencer');
     }
-  }, [user])
+  }, [])
 
   return (
     <main className='influencer-container'>
@@ -50,15 +51,12 @@ function ViewMyInfluencer() {
             <div className='influencer-field-value'>{myInfluencer?.niche}</div>
           </div>
         </section>
-        <button onClick={handleNavigateToUpdate} className='navigate-btn'>수정하기</button>
+        <Link to={'/update-influencer'} className='link-to-update'>수정하기</Link>
       </section>
       <section className='influencer-applied-list'>
         <div className='label-filter'>
           <span>지원한 공고 목록</span>
-          <select
-            className='filter-options'
-            onChange={handleApplyListFilterChange}
-          >
+          <select className='filter-options' onChange={handleApplyListFilterChange}>
             <option value="all">전체 공고</option>
             <option value="bidded">입찰된 공고</option>
             <option value="accepted">승인된 공고</option>

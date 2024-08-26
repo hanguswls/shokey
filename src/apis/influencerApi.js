@@ -34,7 +34,6 @@ const getNiches = async () => {
 
 const getInfluencer = async (influencerId) => {
   const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/influencers/${influencerId}`, {
-    method: 'GET',
     headers: {
     'Content-Type': 'application/json',
     },
@@ -66,8 +65,8 @@ const postInfluencer = async (influencer, accessToken) => {
 	return res.json();
 };
 
-const putInfluencer = async (influencer, accessToken) => {
-	const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/influencers', {
+const putInfluencer = async (influencer, accessToken, influencerId) => {
+	const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/influencers/${influencerId}`, {
 	  method: 'PUT',
 	  headers: {
 	    'Content-Type': 'application/json',

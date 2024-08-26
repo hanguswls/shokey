@@ -1,4 +1,5 @@
-.influencer-container {
+.influencer-container,
+.influencer-container > form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -10,11 +11,27 @@
 	font-size: 16px;
 }
 
+.influencer-container > form {
+	padding: 0;
+}
+
 .influencer-info-container {
 	display: flex;
 	flex-direction: column;
 	gap: 50px;
 	max-width: 461px;
+}
+
+.influencer-title {
+	width: 461px;
+	text-align: left;
+  padding:7px;
+  margin: 0;
+  border: 1px solid hsl(209, 21%, 58%);
+  border-radius: 8px;
+  color: #7E95AA;
+  font-size: 16px;
+  font-weight: 700;
 }
 
 .profile-upload,
@@ -66,7 +83,6 @@
 	display: flex;
 	flex-direction: column;
 	gap: 15px;
-	width: 100%;
 }
 
 .influencer-field {
@@ -92,13 +108,17 @@
 	font-size: 16px;
 }
 
+.influencer-field-select > option {
+	color: #7E95AA;
+}
+
 .influencer-field-input::placeholder,
 .influencer-field-select:invalid,
 .influencer-field-input[value="첨부파일"] {
 	color: grey;
 }
 
-.register-btn, .navigate-btn {
+.manage-btn, .link-to-update {
 	border-radius: 16px;
 	background-color: #FF1B6D;
 	color: #FFFFFF;
@@ -107,4 +127,7 @@
 	font-size: 16px;
 	cursor: pointer;
 	margin: 0 auto;
+	display: block;
+	text-decoration: none;
+	border: none;
 }

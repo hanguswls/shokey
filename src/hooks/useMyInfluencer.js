@@ -1,40 +1,38 @@
 import { useState, useEffect } from "react";
 import { getInfluencer, getNiches } from "../apis/influencerApi";
+import useMyUser from "./useMyUser";
 
-function useMyInfluencer(influencerId) {
+function useMyInfluencer() {
+  const { user } = useMyUser();
+  const influencerId = user?.influencerId;
   const [myInfluencer, setMyInfluencer] = useState(null);
   const [niches, setNiches] = useState([]);
 
-  const fetchMyInfluencer = async() => {
-    try {
-      const res = await getInfluencer(influencerId);
-      setMyInfluencer(res.data);
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  useEffect(() => {
+    const fetchMyInfluencer = async() => {
+      try {
+        if (influencerId) {
+          const res = await getInfluencer(influencerId);
+          setMyInfluencer(res.data);
+        }
+      }
+      catch (error) { alert(error.message); }
+    };
 
-  const fetchNiches = async() => {
-    try {
-      const res = await getNiches();
-      setNiches(res.data);
-    } catch(error) {
-      alert(error.message);
-    }
-  }
-
-  const fetchData = async() => {
-    await Promise.all([
-      fetchMyInfluencer(),
-      fetchNiches(),
-    ])
-  }
+    if (user) fetchMyInfluencer()
+  }, [user]);
 
   useEffect(() => {
-    if (influencerId) {
-      fetchData();
+    const fetchNiches = async() => {
+      try {
+        const res = await getNiches();
+        setNiches(res.data);
+      }
+      catch (error) { alert(error.message); }
     }
-  }, [influencerId]);
+
+    fetchNiches()
+  }, [])
 
   return {
     myInfluencer,
