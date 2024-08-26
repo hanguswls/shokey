@@ -1,0 +1,14 @@
+.input-field {
+  width: 361px;
+  padding: 10px 14px;
+  background: #2C353D;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.input-field ::placeholder {
+  color: grey;
+}
