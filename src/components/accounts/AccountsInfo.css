@@ -1,0 +1,69 @@
+.field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	font-weight: 400;
+}
+
+.field-label {
+  font-weight: 700;
+}
+
+.balance {
+  display: flex;
+  gap: 10px;
+  width: 371px;
+}
+
+.balance > button {
+  background-color: #7E95AA;
+  padding: 10px 14px;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.balance-value,
+.field-value {
+  background-color: #2C353D;
+  color: #FFFFFF;
+	border: none;
+	border-radius: 8px;
+	padding: 10px 14px;
+  font-size: 16px;
+}
+
+.balance-value {
+  width: 100%;
+}
+
+.field-value {
+	width: 371px;
+}
+
+.currency {
+  color: grey;
+  margin-left: 5px;
+}
+
+.accounts-btn,
+.form-btn {
+	border-radius: 16px;
+	background-color: #FF1B6D;
+	color: #FFFFFF;
+	padding: 10px 14px;
+	font-weight: 700;
+	cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+}
+
+.accounts-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
