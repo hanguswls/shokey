@@ -3,10 +3,10 @@ import InputField from "../field/InputField";
 import './AccountsInfo.css';
 
 function DepositForm() {
-  const { amount, handleAmountChange, handleDeposit } = useAccounts();
+  const { amount, handleAmountChange, handleDepositBtnClick } = useAccounts();
 
   return (
-    <form onSubmit={handleDeposit} className="accounts-form">
+    <form onSubmit={handleDepositBtnClick} className="accounts-form">
       <InputField
         type="number"
         id="depositAmount"

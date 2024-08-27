@@ -58,7 +58,7 @@ const useAccounts = () => {
     catch (error) { alert(error.message); }
   };
 
-  const handleUpdateAccounts = async (e) => {
+  const handleUpdateAccountsBtnClick = async (e) => {
     e.preventDefault();
 
     try {
@@ -69,7 +69,7 @@ const useAccounts = () => {
     catch (error) { alert(error.message); }
   };
 
-  const handleDeposit = async(e) => {
+  const handleDepositBtnClick = async(e) => {
     e.preventDefault();
 
     try {
@@ -80,7 +80,7 @@ const useAccounts = () => {
     catch (error) { alert(error.message); }
   }
 
-  const handleWithdraw = async(e) => {
+  const handleWithdrawBtnClick = async(e) => {
     e.preventDefault();
 
     try {
@@ -99,9 +99,9 @@ const useAccounts = () => {
     handleAcccountChange,
     handleAmountChange,
     handleRegisterBtnClick,
-    handleUpdateAccounts,
-    handleDeposit,
-    handleWithdraw
+    handleUpdateAccountsBtnClick,
+    handleDepositBtnClick,
+    handleWithdrawBtnClick
   };
 };
 

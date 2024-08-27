@@ -3,10 +3,10 @@ import InputField from "../field/InputField";
 import './AccountsInfo.css';
 
 function UpdateAccountsForm() {
-  const { accounts, handleBankChange, handleAcccountChange, handleUpdateAccounts } = useAccounts();
+  const { accounts, handleBankChange, handleAcccountChange, handleUpdateAccountsBtnClick } = useAccounts();
 
   return (
-    <form onSubmit={handleUpdateAccounts} className="accounts-form">
+    <form onSubmit={handleUpdateAccountsBtnClick} className="accounts-form">
       <InputField
         type="text"
         id="bank"

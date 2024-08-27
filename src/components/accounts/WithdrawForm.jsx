@@ -3,10 +3,10 @@ import InputField from "../field/InputField";
 import './AccountsInfo.css';
 
 function WithdrawForm() {
-  const { amount, handleAmountChange, handleWithdraw } = useAccounts();
+  const { amount, handleAmountChange, handleWithdrawBtnClick } = useAccounts();
 
   return (
-    <form onSubmit={handleWithdraw} className="accounts-form">
+    <form onSubmit={handleWithdrawBtnClick} className="accounts-form">
       <InputField
         type="number"
         id="withdrawAmount"
