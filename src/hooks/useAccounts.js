@@ -12,7 +12,7 @@ const useAccounts = () => {
   const [amount, setAmount] = useState(null);
   const [accounts, setAccounts] = useState(null);
 
-  const fetchAccounts = async () => {
+  const loadAccounts = async () => {
     try {
       const res = await getAccounts(cookies.accessToken);
       setAccounts(res.data);
@@ -20,7 +20,7 @@ const useAccounts = () => {
     catch (error) { alert(error.message); }
   };
 
-  const fetchBalance = async() => {
+  const loadBalance = async() => {
     try {
       const res = await getBalance(cookies.accessToken);
       setBalance(res.data.balance);
@@ -28,36 +28,31 @@ const useAccounts = () => {
     catch (error) { alert(error.message); }
   }
 
-  const fetchData = async() => {
+  const loadData = async() => {
     Promise.all([
-      fetchAccounts(),
-      fetchBalance()
+      loadAccounts(),
+      loadBalance()
     ])
   }
 
   useEffect(() => {
     if (user?.bankAccount) {
-      fetchData();
+      loadData();
     }
   }, [user]);
 
-  const handleBankChange = (e) => {
-    setAccounts(prev => ({...prev, bank: e.target.value}));
-  }
+  const handleBankChange = (e) => setAccounts(prev => ({...prev, bank: e.target.value}));
 
-  const handleAcccountChange = (e) => {
-    setAccounts(prev => ({...prev, account: e.target.value}));
-  }
+  const handleAcccountChange = (e) => setAccounts(prev => ({...prev, account: e.target.value}));
 
   const handleAmountChange = (e) => setAmount(e.target.value);
 
-  const handleRegisterAccounts = async (e) => {
+  const handleRegisterBtnClick = async (e) => {
     e.preventDefault();
 
     try {
       await postAccounts(accounts, cookies.accessToken);
-      await fetchData();
-      alert('계좌 정보가 수정되었습니다.');
+      await loadData();
       closeModal();
     }
     catch (error) { alert(error.message); }
@@ -68,7 +63,7 @@ const useAccounts = () => {
 
     try {
       await putAccounts(accounts, cookies.accessToken);
-      await fetchData();
+      await loadData();
       closeModal();
     }
     catch (error) { alert(error.message); }
@@ -79,7 +74,7 @@ const useAccounts = () => {
 
     try {
       await postDeposit(amount, cookies.accessToken);
-      await fetchData();
+      await loadData();
       closeModal();
     }
     catch (error) { alert(error.message); }
@@ -90,7 +85,7 @@ const useAccounts = () => {
 
     try {
       await postWithdraw(amount, cookies.accessToken);
-      await fetchData();
+      await loadData();
       closeModal();
     }
     catch (error) { alert(error.message); }
@@ -103,7 +98,7 @@ const useAccounts = () => {
     handleBankChange,
     handleAcccountChange,
     handleAmountChange,
-    handleRegisterAccounts,
+    handleRegisterBtnClick,
     handleUpdateAccounts,
     handleDeposit,
     handleWithdraw

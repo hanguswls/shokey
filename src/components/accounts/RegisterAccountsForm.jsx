@@ -3,10 +3,10 @@ import InputField from "../field/InputField";
 import './AccountsInfo.css';
 
 function RegisterAccountsForm() {
-  const { accounts, handleBankChange, handleAcccountChange, handleRegisterAccounts } = useAccounts();
+  const { accounts, handleBankChange, handleAcccountChange, handleRegisterBtnClick } = useAccounts();
 
   return (
-    <form onSubmit={handleRegisterAccounts} className="accounts-form">
+    <form onSubmit={handleRegisterBtnClick} className="accounts-form">
       <InputField
         type="text"
         id="bank"
