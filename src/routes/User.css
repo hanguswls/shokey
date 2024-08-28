@@ -1,3 +1,5 @@
+/* ViewMyUser.jsx, ViewUser.jsx, UpdateUser.jsx에서 사용됨 */
+
 .no-user {
   color: white;
 }
@@ -13,43 +15,62 @@
 	font-size: 16px;
 }
 
+.user-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .user-title {
 	text-align: center;
 	font-weight: 600;
 	font-size: 25px;
 }
 
-.user-fields {
+.user-subtitle {
+  padding:7px;
+  margin: 0;
+  border: 1px solid #7E95AA;
+  border-radius: 8px;
+  color: #7E95AA;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.user-section > .fields {
+  padding-left: 7px;
+}
+
+.fields {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.user-field {
+.field {
   display: flex;
   justify-content: space-between;
   align-items: center;
 	font-weight: 400;
 }
 
-.user-field-name {
+.field-label {
   font-weight: 700;
 }
 
-.user-field-value {
+.field-value {
   background-color: #2C353D;
   color: #FFFFFF;
 	border: none;
 	border-radius: 8px;
 	padding: 10px 14px;
-	width: 300px;
   font-size: 16px;
 }
 
 .toggle-group {
   display: flex;
   gap: 10px;
-  width: 328px;
+  width: 371px;
 }
 
 .toggle-button {
@@ -72,11 +93,15 @@
   justify-content: center;
 }
 
-.update-button, .delete-button {
+.buttons > button,
+.link-to-update-user {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
 	border-radius: 16px;
 	background-color: #FF1B6D;
 	color: #FFFFFF;
-	padding: 12px 24px;
+	padding: 10px 14px;
 	font-weight: 700;
 	cursor: pointer;
   text-decoration: none;

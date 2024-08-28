@@ -20,44 +20,44 @@ const UpdateUser = () => {
       alert('로그인이 필요한 서비스입니다.');
       navigate('/login');
     }
-  }, [])
+  }, [user])
 
   return (
     <div className="user-container">
       <h2 className="user-title">사용자 정보 수정</h2>
-      <div className="user-fields">
-        <div className="user-field">
-          <span className="user-field-name">아이디</span>
+      <div className="fields">
+        <div className="field">
+          <span className="field-label">아이디</span>
           <input
             type="text"
             name="userId"
-            className="user-field-value"
+            className="field-value"
             value={updatedUser?.userId || ''}
             onChange={handleUserChange}
           />
         </div>
-        <div className="user-field">
-          <span className="user-field-name">패스워드</span>
+        <div className="field">
+          <span className="field-label">패스워드</span>
           <input
             type="password"
             name="userPassword"
-            className="user-field-value"
+            className="field-value"
             value={updatedUser?.userPassword || ''}
             onChange={handleUserChange}
           />
         </div>
-        <div className="user-field">
-          <span className="user-field-name">이름</span>
+        <div className="field">
+          <span className="field-label">이름</span>
           <input
             type="text"
             name="userName"
             value={updatedUser?.userName}
             onChange={handleUserChange}
-            className="user-field-value"
+            className="field-value"
           />
         </div>
-        <div className="user-field">
-          <span className="user-field-name">성별</span>
+        <div className="field">
+          <span className="field-label">성별</span>
           <div className="toggle-group">
             <button
               name="userGender"
@@ -75,14 +75,14 @@ const UpdateUser = () => {
             </button>
           </div>
         </div>
-        <div className="user-field">
-          <span className="user-field-name">이메일</span>
+        <div className="field">
+          <span className="field-label">이메일</span>
           <input
             type="text"
             name="userEmail"
             value={updatedUser?.userEmail || ''}
             onChange={handleUserChange}
-            className="user-field-value"
+            className="field-value"
           />
         </div>
       </div>

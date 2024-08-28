@@ -12,7 +12,7 @@ import useLogout from './useLogout';
  */
 const useManageMyUser = () => {
   const [cookies, _ , removeCookies] = useCookies(['accessToken', 'refreshToken']);
-  const { user, setUser } = useMyUser();
+  const { user } = useMyUser();
   const [updatedUser, setUpdatedUser] = useState();
   const navigate = useNavigate();
   const logout = useLogout();
@@ -22,10 +22,6 @@ const useManageMyUser = () => {
       setUpdatedUser({...user});
     }
   }, [user]);
-
-  useEffect(()=>{
-    console.table(updatedUser);
-  }, [updatedUser]);
 
   const handleUserGenderToggle = () => {
     setUpdatedUser(prev => ({...prev, userGender: !updatedUser.userGender }))
