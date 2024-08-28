@@ -1,16 +1,28 @@
+import { useEffect } from 'react';
 import ApplyCard from '../components/card/ApplyCard';
 import usePostApplies from '../hooks/usePostApplies';
 import usePostDetail from '../hooks/usePostDetail';
 import './ApplyList.css';
+import { useCookies } from 'react-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function ApplyList() {
   const { post } = usePostDetail();
+  const [ cookies ] = useCookies(['accessToken']);
+  const navigate = useNavigate();
   const { 
     applies, 
     filterList,
     getApplyDataFromServer, 
     handleFilterCheck, 
   } = usePostApplies();
+
+  useEffect(() => {
+    if (!cookies.accessToken) {
+      alert('로그인이 필요한 서비스입니다.');
+      navigate('/login');
+    }
+  }, [])
 
   return (
     <main className="apply-list">

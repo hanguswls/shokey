@@ -41,8 +41,8 @@ function ApplyCard(props) {
   }
 
   const getVideoInfoFromServer = async () => {
-    // shortID가 없으면 실행 종료
-    if (!shortsId) return ;
+    // shortID나 토큰이 없으면 실행 종료
+    if (!shortsId || !cookies.accessToken) return ;
 
     try {
       const res = await getVideoInfoListWithId(shortsId);
