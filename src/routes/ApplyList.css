@@ -1,0 +1,165 @@
+.applies-container {
+  display: flex;
+  position: relative;
+}
+
+.applies-sticky-content {
+  box-sizing: border-box;
+  float: left;
+  width: 50%;
+}
+
+.applies-sticky-content > section {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+}
+
+.applies-filter-list > li > input {
+  display: none;
+}
+
+.applies-filter-list > li > input + label {
+  display: inline-block;
+  border: 0;
+  width: 16px;
+  height: 16px;
+  background: #7E95AA;
+  border-radius: 4px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.applies-filter-list > li > input:checked + label {
+  background: url('/checkbox_checked.png');
+}
+
+.applies-container > section:nth-child(1) > section > article {
+  background: #2C353D;
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.applies-container > section:nth-child(2) {
+  margin-left: auto;
+  width: 50%;
+  padding: 0 0 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.apply-list {
+  max-width: 1120px;
+  padding: 50px 0 100px 0;
+  margin: auto;
+}
+
+.applies-title {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.apply-card {
+  padding: 18px;
+  border-radius: 12px;
+  background: #2C353D;
+  display: flex;
+  gap: 6px;
+  flex-direction: column;
+}
+
+.apply-card * {
+  margin: 0;
+  color: white;
+}
+
+.apply-card > figure {
+  overflow: hidden;
+}
+
+.apply-card > figure > video {
+  width: 100%;
+}
+
+.apply-card > h3 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.apply-card > span {
+  color: grey;
+}
+
+.apply-card > p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.apply-card > div {
+  display: flex;
+  margin-top: 10px;
+}
+
+.apply-card > div > button {
+  background: #FF1B6D;
+  border-radius: 12px;
+  padding: 6px 18px;
+  border: none;
+  font-size: 14px;
+  margin-left: auto;
+  cursor: pointer;
+  transition: filter 0.3s;
+}
+
+.apply-card > div > button:hover {
+  filter: brightness(0.8);
+}
+
+.applies-inner > section:nth-child(2) {
+  box-sizing: border-box;
+  background: #2C353D;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.applies-inner > section:nth-child(2) > h4 {
+  color: white;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.applies-filter-list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 10px ;
+}
+
+.applies-filter-list > li {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}

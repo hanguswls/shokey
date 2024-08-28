@@ -16,6 +16,7 @@ import ViewUser from './routes/ViewUser'
 import ViewMyUser from './routes/ViewMyUser'
 import ViewInfluencer from './routes/ViewInfluencer'
 import MyPosts from './routes/MyPosts'
+import ApplyList from './routes/ApplyList'
 import ViewMyInfluencer from './routes/ViewMyInfluencer'
 import ManageMyInfluencer from './routes/ManageMyInfluencer'
 
@@ -39,6 +40,7 @@ function App() {
 				<Route path='/mypage' element={<ViewMyUser />} />
         <Route path='/influencers/:id' element={<ViewInfluencer />} />
         <Route path='/myposts' element={<MyPosts />} />
+        <Route path='/applies/:id' element={<ApplyList />} />
         <Route path='/my-influencer' element={<ViewMyInfluencer />}></Route>
         <Route path='/register-influencer' element={<ManageMyInfluencer mode="register" />}></Route>
         <Route path='/update-influencer' element={<ManageMyInfluencer mode="update" />}></Route>

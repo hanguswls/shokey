@@ -29,7 +29,7 @@ function Header() {
                 <div className="user-menu-options">
                   <span onClick={() => navigate('/mypage')}>My Page</span>
                   <span onClick={() => navigate('/my-influencer')}>Influencer</span>
-                  <span onClick={() => navigate('/advertiser')}>Advertiser</span>
+                  <span onClick={() => navigate('/myposts')}>My Posts</span>
                 </div>
               </div>
             </>
