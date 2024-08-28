@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import usePostDetail from '../hooks/usePostDetail';
 import './PostDetail.css';
 
 function PostDetail() {
   const { post } = usePostDetail();
+  const navigate = useNavigate();
 
   return (
     <main className="post-detail">
@@ -47,7 +49,7 @@ function PostDetail() {
             </li>
           </ul>
         </article>
-        <button className="post-detail-apply-btn">
+        <button className="post-detail-apply-btn" onClick={() => { navigate('/apply/' + post?.id) }}>
           지원하기
         </button>
       </section>

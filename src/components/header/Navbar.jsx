@@ -6,7 +6,7 @@ function Navbar() {
     <nav className="navbar">
       <ul className="navbar-list">
         <NavItem text={"Home"} link={""} />
-        <NavItem text={"Become an Influencer"} link={"promote"} />
+        <NavItem text={"Become an Influencer"} link={"register-influencer"} />
         <NavItem text={"Search Influencer"} link={"search"} />
         <NavItem text={"Posts"} link={"posts"} />
       </ul>

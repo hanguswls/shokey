@@ -1,0 +1,73 @@
+.applied-post-card {
+  position: relative;
+  padding: 20px;
+  background: #2C353D;
+  border-radius: 24px;
+  color: white;
+  cursor: pointer;
+}
+
+.applied-post-card-title {
+  font-size: 24px;
+  height: 60px;
+  margin-top: 0;
+  margin-bottom: 5px;
+  display: -webkit-box;
+  line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.applied-post-card-user {
+  color: grey;
+  margin-bottom: 10px;
+}
+
+.applied-post-card-image {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 1;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.applied-post-card-image > img {
+  width: 100%;
+  height: 100%;
+}
+
+.no-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  background-color: #7E95AA;
+}
+
+.bidded-mark,
+.accepted-mark {
+  margin: 0;
+}
+
+.bidded-mark > img,
+.accepted-mark > img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 108.9;
+  aspect-ratio: 1;
+}
+
+.accepted-mark > img {
+  z-index: 2;
+}
+
+.bidded-mark > img {
+  z-index: 1;
+}

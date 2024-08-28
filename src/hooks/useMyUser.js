@@ -28,7 +28,7 @@ const useMyUser = () => {
 
   return ({
     user,
-    setUser,
+    fetchUser,
   })
 };
 
