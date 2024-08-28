@@ -1,7 +1,16 @@
+.apply-card {
+  position: relative;
+}
+
 .apply-tag {
   position: absolute;
   right: 0;
   top: 0;
   width: 200px;
   z-index: 100;
+}
+
+.apply-card > figure > iframe {
+  width: 100%;
+  min-height: 500px;
 }
