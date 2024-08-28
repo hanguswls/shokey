@@ -17,12 +17,15 @@ const fetchApi = async (endPoint, options) => {
  */
 const registerBidApi = (applyId, token) => {
   return fetchApi(`/api/applies/${applyId}/bids`, {
+    method: 'POST',
     headers: {
       'authorization': 'Bearer ' + token
     }
   });
 }
 
+
+     
 /**
  * 입찰 등록된 특정 지원 항목을 승인하는 api 함수.
  * @param {number} applyId 지원 공고 id
@@ -31,6 +34,7 @@ const registerBidApi = (applyId, token) => {
  */
 const acceptBidApi = (applyId, token) => {
   return fetchApi(`/api/applies/${applyId}/bids`, {
+    method: 'POST',
     headers: {
       'authorization': 'Bearer ' + token
     }

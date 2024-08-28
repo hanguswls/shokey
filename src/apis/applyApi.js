@@ -1,12 +1,12 @@
 const getAppliesWithPostId = async (postId, filterOptions, token) => {
-  const {
-    bidded,
-    uploaded,
-    accepted
-  } = filterOptions;
+  let filterStr = "";
+  if (filterOptions.length > 0) {
+    filterOptions.forEach(item => {
+      filterStr += `&kinds=${item}`;
+    });
+  }
 
-  const res = await fetch(import.meta.env.VITE_APP_API_URL + 
-    `/api/posts/${postId}/applies?bidded=${bidded}&uploaded=${uploaded}&accepted=${accepted}`, {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/posts/${postId}/applies${filterStr.length > 0 ? '?' : ''}${filterStr}`, {
     headers: {
       'authorization': 'Bearer ' + token
     }

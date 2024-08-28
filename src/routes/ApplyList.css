@@ -18,6 +18,25 @@
   top: 0;
 }
 
+.applies-filter-list > li > input {
+  display: none;
+}
+
+.applies-filter-list > li > input + label {
+  display: inline-block;
+  border: 0;
+  width: 16px;
+  height: 16px;
+  background: #7E95AA;
+  border-radius: 4px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.applies-filter-list > li > input:checked + label {
+  background: url('/checkbox_checked.png');
+}
+
 .applies-container > section:nth-child(1) > section > article {
   background: #2C353D;
   width: 100%;
@@ -111,4 +130,42 @@
 
 .apply-card > div > button:hover {
   filter: brightness(0.8);
+}
+
+.applies-inner > section:nth-child(2) {
+  box-sizing: border-box;
+  background: #2C353D;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 10px;
+}
+
+.applies-inner > section:nth-child(2) > h4 {
+  color: white;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.applies-filter-list {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 10px ;
+}
+
+.applies-filter-list > li {
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 14px;
+}
+
+.applies-filter-list > li:last-child {
+  margin-left: auto;
+  cursor: pointer;
+  gap: 2px;
 }

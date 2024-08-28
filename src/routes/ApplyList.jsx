@@ -1,16 +1,43 @@
 import ApplyCard from '../components/card/ApplyCard';
 import usePostApplies from '../hooks/usePostApplies';
 import usePostDetail from '../hooks/usePostDetail';
+import clearIcon  from '../assets/clear_icon.png';
 import './ApplyList.css';
 
 function ApplyList() {
   const { post } = usePostDetail();
-  const { applies, getApplyDataFromServer } = usePostApplies();
+  const { applies, getApplyDataFromServer, filters, handleFilterCheck } = usePostApplies();
+  const filterList = [
+    {enum: 'APPLIED', name: '지원함'},
+    {enum: 'BIDDED', name: '입찰됨'},
+    {enum: 'UNACCEPTED', name: '승인대기중'},
+    {enum: 'ACCEPTED', name: '승인됨'}
+  ];
 
   return (
     <main className="apply-list">
       <section className="applies-inner">
         <h2 className="applies-title">지원 목록</h2>
+        <section>
+          <h4>Filters</h4>
+          <ul className="applies-filter-list">
+            {
+              filterList.map((filter, i) => {
+                return (
+                  <li key={i}>
+                    {filter.name}
+                    <input type="checkbox" id={filter.enum} value={filter.enum} onChange={handleFilterCheck} />
+                    <label htmlFor={filter.enum}></label>
+                  </li>
+                )
+              })
+            }
+            <li>
+              Clear All 
+              <img src={clearIcon} alt="clear-icon" />
+            </li>
+          </ul>
+        </section>
         <section className="applies-container">
           <section className="applies-sticky-content">
             <section>
