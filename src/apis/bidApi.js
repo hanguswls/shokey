@@ -33,7 +33,7 @@ const registerBidApi = (applyId, token) => {
  * @returns api response
  */
 const acceptBidApi = (applyId, token) => {
-  return fetchApi(`/api/applies/${applyId}/bids`, {
+  return fetchApi(`/api/applies/${applyId}/accept`, {
     method: 'POST',
     headers: {
       'authorization': 'Bearer ' + token
