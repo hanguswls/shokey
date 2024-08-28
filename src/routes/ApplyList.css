@@ -163,9 +163,3 @@
   gap: 5px;
   font-size: 14px;
 }
-
-.applies-filter-list > li:last-child {
-  margin-left: auto;
-  cursor: pointer;
-  gap: 2px;
-}

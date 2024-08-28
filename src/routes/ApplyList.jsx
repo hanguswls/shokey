@@ -1,18 +1,16 @@
 import ApplyCard from '../components/card/ApplyCard';
 import usePostApplies from '../hooks/usePostApplies';
 import usePostDetail from '../hooks/usePostDetail';
-import clearIcon  from '../assets/clear_icon.png';
 import './ApplyList.css';
 
 function ApplyList() {
   const { post } = usePostDetail();
-  const { applies, getApplyDataFromServer, filters, handleFilterCheck } = usePostApplies();
-  const filterList = [
-    {enum: 'APPLIED', name: '지원함'},
-    {enum: 'BIDDED', name: '입찰됨'},
-    {enum: 'UNACCEPTED', name: '승인대기중'},
-    {enum: 'ACCEPTED', name: '승인됨'}
-  ];
+  const { 
+    applies, 
+    filterList,
+    getApplyDataFromServer, 
+    handleFilterCheck, 
+  } = usePostApplies();
 
   return (
     <main className="apply-list">
@@ -32,10 +30,6 @@ function ApplyList() {
                 )
               })
             }
-            <li>
-              Clear All 
-              <img src={clearIcon} alt="clear-icon" />
-            </li>
           </ul>
         </section>
         <section className="applies-container">
@@ -71,7 +65,11 @@ function ApplyList() {
                   content={apply.content}
                   videoLink={apply.videoLink}
                   createdAt={apply.appliedAt}
-                  updateAppliesData={getApplyDataFromServer} /> })
+                  updateAppliesData={getApplyDataFromServer}
+                  shortsId={apply.shortsId}
+                  accepted={apply.accepted}
+                  bidded={apply.bidded} />
+               })
             }
           </section>
         </section>

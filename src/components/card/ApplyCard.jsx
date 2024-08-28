@@ -1,5 +1,8 @@
+import './ApplyCard.css';
 import { useCookies } from "react-cookie";
 import { registerBidApi } from "../../apis/bidApi";
+import approveTag from '/src/assets/approved_tag.svg';
+import biddedTag from '/src/assets/bidded_tag.svg';
 
 function ApplyCard(props) {
   const [ cookies ] = useCookies(['accessToken']);
@@ -10,7 +13,10 @@ function ApplyCard(props) {
     content,
     videoLink,
     createdAt,
-    updateAppliesData
+    updateAppliesData,
+    shortsId,
+    accepted,
+    bidded
   } = props;
 
   const handleClickBidButton = async () => {
@@ -24,6 +30,7 @@ function ApplyCard(props) {
 
   return (
     <article className="apply-card">
+      { accepted || bidded ? <img className="apply-tag" src={accepted ? approveTag : biddedTag} alt="tag" /> : null }
       <figure>
         <video src={ videoLink } controls={true}/>
       </figure>
