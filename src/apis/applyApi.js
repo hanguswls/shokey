@@ -11,8 +11,9 @@ const getAppliesWithPostId = async (postId, filterOptions, token) => {
     headers: {
       'authorization': 'Bearer ' + token
     }
+  });
 
-if (!res.ok) {
+  if (!res.ok) {
     const message = (await res.json()).statusMsg;
     throw new Error(message);
   }
