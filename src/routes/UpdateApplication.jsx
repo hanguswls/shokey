@@ -13,7 +13,9 @@ function UpdateApplication() {
     handleFileInputChange,
     handleDescriptionChange,
     handleUpdateClick,
-    videoUrl
+    videoUrl,
+    title,
+    description
   } = useApply(application);
 
   return (
@@ -21,7 +23,7 @@ function UpdateApplication() {
       <section className="apply-inner">
         <input
           type="text"
-          value={application?.title}
+          value={title}
           placeholder="제목"
           onChange={handleTitleChange}
         />
@@ -43,12 +45,12 @@ function UpdateApplication() {
         </figure>
         <textarea
           rows={8}
-          value={application?.content}
+          value={description}
           placeholder="지원 내용"
           onChange={handleDescriptionChange}
         ></textarea>
         <button type="submit" onClick={(e) => handleUpdateClick(e, applyId)}>
-          수정하기
+          수정 완료
         </button>
       </section>
     </main>

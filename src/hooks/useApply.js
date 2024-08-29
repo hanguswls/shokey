@@ -117,7 +117,9 @@ function useApply(initialData = null) {
     handleDescriptionChange,
     handleSubmitClick,
     handleUpdateClick,
-    videoUrl
+    videoUrl,
+    title,
+    description
   }
 }
 

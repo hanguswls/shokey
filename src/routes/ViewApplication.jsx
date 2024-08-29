@@ -74,19 +74,16 @@ function ViewApplication() {
         </section>
       )}
       <div className="btn-wrapper">
-        {application?.bidded ? (
-          !application?.accepted && 
+        {application?.bidded ? 
+          ( !application?.accepted && 
             <button className="post-detail-apply-btn" onClick={hanldeRegisterLinkBtnClick}>등록하기</button>
-        ) : (
-          <button
-            className="post-detail-apply-btn"
-            onClick={() => {
-              navigate(`/update-application/${application?.apply_id}`);
-            }}
+          ) : (
+          <button className="post-detail-apply-btn"
+            onClick={() => { navigate(`/update-application/${application?.apply_id}`); }}
           >
             수정하기
-          </button>
-        )}
+          </button>)
+        }
       </div>
     </main>
   );
