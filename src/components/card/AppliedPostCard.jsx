@@ -15,7 +15,7 @@ function AppliedPostCard(props) {
   } = props;
 
   return (
-    <article className="applied-post-card" onClick={() => { navigate('/post/' + id) }}>
+    <article className="applied-post-card" onClick={() => { navigate('/application/' + id) }}>
       <figure className="applied-post-card-image">
         { image ? (
           <img src={image} alt="post" />

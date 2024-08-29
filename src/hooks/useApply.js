@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { handleTextareaChange } from "../utils/textareaHandler";
 import { useEffect, useRef, useState } from 'react';
-import { postApply } from '../apis/applyApi';
+import { postApply, putApplication } from '../apis/applyApi';
 import { useCookies } from 'react-cookie';
 import { postFile } from '../apis/fileApi';
 
-function useApply() {
+function useApply(initialData = null) {
   const input = useRef();
   const params = useParams();
   const [uploadVideo, setUploadVideo] = useState();
@@ -22,6 +22,14 @@ function useApply() {
     }
   }, [uploadVideo])
 
+  useEffect(() => {
+    if (initialData) {
+      setTitle(initialData.title);
+      setDescription(initialData.content);
+      setVideoUrl(initialData.videoLink);
+    }
+  }, [initialData]);
+
   const handleFileInputChange = (e) => {
     const file = e.target.files[0];
     setUploadVideo(file);
@@ -36,7 +44,7 @@ function useApply() {
     handleTextareaChange(e);
   }
 
-  const handleSubmitClick = async (e) => {
+  const handleAction = async (e, type, applyId = null) => {
     e.preventDefault();
 
     if (!title.trim()) {
@@ -49,38 +57,58 @@ function useApply() {
       return;
     }
 
-    if (!uploadVideo) {
-      alert('영상을 추가해주세요.');
-      return;
-    }
+    if (type === 'submit') {
+      const formdata = new FormData();
+      formdata.append('file', uploadVideo);
 
-    const formdata = new FormData();
-    formdata.append('file', uploadVideo);
-    let uploadedVideoLink;
+      let uploadedVideoLink;
 
-    try {
-      const res = await postFile(formdata, cookies.accessToken);
-      uploadedVideoLink = res.data;
-    } catch (err) {
-      alert(err.message);
-      return;
-    }
+      try {
+        const res = await postFile(formdata, cookies.accessToken);
+        uploadedVideoLink = res.data;
+      } catch (err) {
+        alert(err.message);
+        return;
+      }
 
-    const applyData = {
-      title: title,
-      content: description,
-      videoLink: uploadedVideoLink
-    };
+      const applyData = {
+        title: title,
+        content: description,
+        videoLink: uploadedVideoLink
+      };
 
-    postApply(applyData, params.postId, cookies.accessToken)
+      postApply(applyData, params.postId, cookies.accessToken)
       .then((res) => {
         alert('지원했습니다.');
-        navigate('/post/' + params.postId);
+        navigate('/application' + res.data.apply_id);
       })
       .catch((err) => {
         alert(err.message);
       })
+    }
+    else if (type === 'update') {
+      const formdata = new FormData();
+      formdata.append('file', uploadVideo);
+
+      const applyData = {
+        title: title,
+        content: description,
+        videoLink: videoUrl
+      };
+
+      putApplication(applyData, applyId, cookies.accessToken)
+      .then((res) => {
+        alert('수정했습니다.');
+        navigate('/application/' + res.data.apply_id);
+      })
+      .catch((err) => {
+        alert(err.message);
+      })
+    }
   }
+
+  const handleSubmitClick = (e) => handleAction(e, 'submit');
+  const handleUpdateClick = (e, applyId) => handleAction(e, 'update', applyId);
 
   return {
     input,
@@ -88,6 +116,7 @@ function useApply() {
     handleFileInputChange,
     handleDescriptionChange,
     handleSubmitClick,
+    handleUpdateClick,
     videoUrl
   }
 }

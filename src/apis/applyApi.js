@@ -1,4 +1,3 @@
-
 const getAppliesWithPostId = async (postId, filterOptions, token) => {
   let filterStr = "";
   if (filterOptions.length > 0) {
@@ -11,8 +10,9 @@ const getAppliesWithPostId = async (postId, filterOptions, token) => {
     headers: {
       'authorization': 'Bearer ' + token
     }
+  });
 
-if (!res.ok) {
+  if (!res.ok) {
     const message = (await res.json()).statusMsg;
     throw new Error(message);
   }
@@ -40,8 +40,6 @@ const postApply = async (applyData, postId, token) => {
 
 const getMyApplyList = async (accessToken) => {
 	const res = await fetch(import.meta.env.VITE_APP_API_URL + '/api/applies/my', {
-	  method: 'GET',
-	  credentials: 'include',
 	  headers : {
 		'Authorization': `Bearer ${accessToken}`
 	  },
@@ -55,10 +53,48 @@ const getMyApplyList = async (accessToken) => {
   return res.json();
 }
 
-const getApplyList = async (influencerId) => {
-	const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/applies/${influencerId}`, {
-	  method: 'GET',
-	});
+const getApplication = async (applyId, accessToken) => {
+	const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/applies/${applyId}`, {
+    headers : {
+      'Authorization': `Bearer ${accessToken}`
+    },
+  });
+
+  if (!res.ok) {
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+const postShorts = async (link, applyId, accessToken) => {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `api/applies/${applyId}/shorts`, {
+    method: 'POST',
+    headers: {
+      'authorization': 'Bearer ' + accessToken,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(link)
+  });
+
+  if (!res.ok) {
+    const message = (await res.json()).statusMsg;
+    throw new Error(message);
+  }
+
+  return res.json();
+}
+
+const putApplication = async (applyData, id, token) => {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/applies/${id}`, {
+    method: 'PUT',
+    headers: {
+      'authorization': 'Bearer ' + token,
+      'content-type': 'application/json'
+    },
+    body: JSON.stringify(applyData)
+  });
 
   if (!res.ok) {
     const message = (await res.json()).statusMsg;
@@ -70,7 +106,9 @@ const getApplyList = async (influencerId) => {
 
 export {
   postApply,
+  putApplication,
   getMyApplyList,
-  getApplyList,
+  getApplication,
+  postShorts,
   getAppliesWithPostId
 };

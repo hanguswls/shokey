@@ -15,7 +15,7 @@ function PostDetail() {
         </article>
         <article className="content-wrapper">
           <figure className="post-detail-image">
-            <img src="https://picsum.photos/500/300" alt="" />
+            <img src={post?.image} alt="" />
           </figure>
           <p className="post-detail-description">
             {post?.content}
@@ -49,9 +49,34 @@ function PostDetail() {
             </li>
           </ul>
         </article>
-        <button className="post-detail-apply-btn" onClick={() => { navigate('/apply/' + post?.id) }}>
-          지원하기
-        </button>
+        {
+          post?.apply ? <>
+            <section className="post-detail-contents">
+            <h4 className="section-name">링크</h4>
+            <input
+              className="link"
+              type='text'
+            />
+            </section>
+            <section className="post-detail-contents">
+              <h4 className="section-name">지원 내용</h4>
+              <article className="title-wrapper">
+                <h1>{post?.application.title}</h1>
+              </article>
+              <article className="content-wrapper">
+                <figure className="post-detail-image">
+                  <video src={post?.application.postImage} alt="" />
+                </figure>
+              </article>
+              <article className="content-wrapper">
+                <p className="post-detail-description">{post?.application.postContent}</p>
+              </article>
+            </section>
+          </> :
+          <button className="post-detail-apply-btn" onClick={() => { navigate('/apply/' + post?.id) }}>
+            지원하기
+          </button>
+        }
       </section>
     </main>
   )
