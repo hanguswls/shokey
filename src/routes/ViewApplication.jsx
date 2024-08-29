@@ -5,7 +5,7 @@ import "./Application.css";
 
 function ViewApplication() {
   const { applyId } = useParams();
-  const { post, application, hanldeRegisterLinkBtnClick, handleLinkChange } = useApplication(applyId);
+  const { post, application, handleRegisterLinkBtnClick, handleLinkChange, link } = useApplication(applyId);
   const navigate = useNavigate();
 
   return (
@@ -24,24 +24,9 @@ function ViewApplication() {
         </article>
         <article className="post-detail-conditions">
           <ul>
-            <li>
-              마감일
-              <div>{post?.endDate}</div>
-            </li>
-            <li>
-              인센티브
-              <div>
-                {Number(post?.extraPrice).toLocaleString()}
-                <span>원</span>
-              </div>
-            </li>
-            <li>
-              계약금
-              <div>
-                {Number(post?.price).toLocaleString()}
-                <span>원</span>
-              </div>
-            </li>
+            <li>마감일<div>{post?.endDate}</div></li>
+            <li>인센티브<div>{Number(post?.extraPrice).toLocaleString()}<span>원</span></div></li>
+            <li>계약금<div>{Number(post?.price).toLocaleString()}<span>원</span></div></li>
           </ul>
         </article>
       </section>
@@ -66,23 +51,21 @@ function ViewApplication() {
       {(application?.bidded && !application?.accepted ) && (
         <section className="post-detail-contents">
           <h4 className="section-name">링크</h4>
-          <input 
-            className="link" 
-            type="text" 
-            onChange={handleLinkChange}
-            />
+          <input value={link || application?.shortsId} className="link" type="text" onChange={handleLinkChange}/>
+          <div className="btn-wrapper">
+            <button className="post-detail-apply-btn" onClick={handleRegisterLinkBtnClick}>
+              {application?.shortsId ? "링크 수정 완료" : "등록하기"}
+            </button>
+          </div>
         </section>
       )}
       <div className="btn-wrapper">
-        {application?.bidded ? 
-          ( !application?.accepted && 
-            <button className="post-detail-apply-btn" onClick={hanldeRegisterLinkBtnClick}>등록하기</button>
-          ) : (
+        { !application?.bidded  &&
           <button className="post-detail-apply-btn"
             onClick={() => { navigate(`/update-application/${application?.apply_id}`); }}
           >
             수정하기
-          </button>)
+          </button>
         }
       </div>
     </main>

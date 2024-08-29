@@ -68,14 +68,14 @@ const getApplication = async (applyId, accessToken) => {
   return res.json();
 }
 
-const postShorts = async (link, applyId, accessToken) => {
-  const res = await fetch(import.meta.env.VITE_APP_API_URL + `api/applies/${applyId}/shorts`, {
-    method: 'POST',
+const patchShorts = async (shortsData, applyId, accessToken) => {
+  const res = await fetch(import.meta.env.VITE_APP_API_URL + `/api/applies/${applyId}/shorts`, {
+    method: 'PATCH',
     headers: {
       'authorization': 'Bearer ' + accessToken,
       'content-type': 'application/json'
     },
-    body: JSON.stringify(link)
+    body: JSON.stringify(shortsData)
   });
 
   if (!res.ok) {
@@ -109,6 +109,6 @@ export {
   putApplication,
   getMyApplyList,
   getApplication,
-  postShorts,
+  patchShorts,
   getAppliesWithPostId
 };

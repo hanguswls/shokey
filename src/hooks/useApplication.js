@@ -1,5 +1,5 @@
 import { useCookies } from 'react-cookie';
-import { getApplication, postShorts } from '../apis/applyApi';
+import { getApplication, patchShorts } from '../apis/applyApi';
 import { getPost } from '../apis/postApi';
 import { useEffect, useState } from 'react';
 
@@ -29,6 +29,10 @@ function useApplication(applyId) {
   const loadData = async () => {
     const postId = await loadApplication();
     await loadPost(postId);
+
+    if (application.shortsId) {
+      setLink(application.shortsId);
+    }
   }
 
   useEffect(() => {
@@ -37,20 +41,22 @@ function useApplication(applyId) {
     }
   }, [applyId]);
 
-  const handleRegisterLinkBtnClick = async (e) => {
-    try { await postShorts(link, applyId, cookies.accessToken); }
+  const handleRegisterLinkBtnClick = async () => {
+    const shortsData = { shortsId: link };
+    try {
+      await patchShorts(shortsData, applyId, cookies.accessToken); 
+      alert('링크가 등록되었습니다');
+    }
     catch (error) { alert(error.message); }
   }
-
-  const handleUpdateLinkBtnClick = async (e) => { }
 
   const handleLinkChange = (e) => setLink(e.target.value);
 
   return {
     post,
+    link,
     application,
     handleRegisterLinkBtnClick,
-    handleUpdateLinkBtnClick,
     handleLinkChange,
   }
 }
