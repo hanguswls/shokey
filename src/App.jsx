@@ -19,6 +19,8 @@ import MyPosts from './routes/MyPosts'
 import ApplyList from './routes/ApplyList'
 import ViewMyInfluencer from './routes/ViewMyInfluencer'
 import ManageMyInfluencer from './routes/ManageMyInfluencer'
+import ViewApplication from './routes/ViewApplication'
+import UpdateApplication from './routes/UpdateApplication'
 
 function App() {
 	useRefresh();
@@ -35,6 +37,8 @@ function App() {
 				<Route path='/search' element={<Search />} />
 				<Route path='/post/:id' element={<PostDetail />} />
         <Route path='/apply/:postId' element={<Apply />} />
+        <Route path='/application/:applyId' element={<ViewApplication />} />
+        <Route path='/update-application/:applyId' element={<UpdateApplication />} />
         <Route path='/users/:id' element={<ViewUser />} />
 				<Route path='/update-user' element={<UpdateUser />} />
 				<Route path='/mypage' element={<ViewMyUser />} />

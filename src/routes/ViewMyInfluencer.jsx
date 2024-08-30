@@ -68,6 +68,7 @@ function ViewMyInfluencer() {
                 return (
                   <AppliedPostCard
                     key={i}
+                    id={item.apply_id}
                     title={item.postTitle}
                     image={item.postImage}
                     user={item.advertiserName}
